@@ -20,7 +20,7 @@ def getDistances(xc, xd, var, cdiffs):
     return distArray
 ###############################################################################
 def getrow(xd, xc, cdiffs, index, missing):
-
+    
     row = empty(0,dtype=np.double)
     dinst1 = xd[index]
     cinst1 = xc[index]
