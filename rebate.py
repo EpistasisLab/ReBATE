@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-#  REBATE
-#  version date: Thu Jul 22 15:08 EDT 2016
+#  REBATE CLI
+# Mon Aug 15 12:34:58 EDT 2016
 ###############################################################################
 import time as tm
 import sys
 import os
-import rebateIO as io
-import rebateCommon as cmn
+import IO as io
+import Common as cmn
 ###############################################################################
 prog_start = tm.time()
 Scores = fullscores = table = lost = 0
@@ -18,6 +18,12 @@ options = io.getArguments()
 V = options['verbose']
 turfpct = int(options['turfpct'])
 algorithm = options['algorithm']
+if(algorithm != 'relieff' and algorithm != 'surf' and algorithm != 'surfstar'
+                          and algorithm != 'multisurf'):
+    print("algorithm " + algorithm + " is not available")
+    print("Use relieff, surf, surfstar or multisurf")
+    sys.exit(1)
+
 if(V):
     print("-------------- Python Version --------------")
     print(sys.version)
@@ -89,14 +95,16 @@ if(V):
 begin = tm.time()
 if(var['mdcnt'] > 0 or var['dataType'] == 'mixed'):
     import mmDistance as md
-    dtypes, diffs = cmn.dtypeArray(header, attr, var)
-    distArray = md.getDistances(x, var, dtypes, diffs)
+    diffs, cidx, didx = cmn.dtypeArray(header, attr, var)
+    distArray = md.getDistances(x[:,cidx], x[:,didx], var, diffs[cidx])
     disttype = "mixed/missing"
 else:
     distArray = cmn.getDistances(x, attr, var)
     disttype = "discrete/continuous"
 if(V):
-    print(disttype + " distance array elapsed time(sec) = " + str(tm.time()-begin))
+    ctime = "[" + tm.strftime("%H:%M:%S") + "]"
+    print(ctime + " " + disttype + " distance array time(sec) = " 
+                + str(tm.time()-begin))
     sys.stdout.flush()
 
 #-----------------------------------------------------------------------------#
@@ -144,8 +152,12 @@ elif(algorithm == 'surf' or algorithm =='surfstar'):
 ordered_attr = io.createScoresFile(header, var, Scores, options,
                                    prog_start, turfpct, table, lost)
 
-if(options['topattr'] > 0): io.create_subset(header, x, y, options, ordered_attr)
-if(options['testdata'] != None): io.create_test_subset(tdata, options, ordered_attr)
+if(options['topattr'] > 0): 
+    io.create_subset(header, x, y, options, ordered_attr)
+if(options['testdata'] != None): 
+    io.create_test_subset(tdata, options, ordered_attr)
 
-if(V): print("Overall program time(sec) = " + str(tm.time() - prog_start))
+if(V): 
+    ctime = "[" + tm.strftime("%H:%M:%S") + "]"
+    print(ctime + " Overall program time(sec) = " + str(tm.time() - prog_start))
 ###############################################################################
