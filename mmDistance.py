@@ -20,7 +20,7 @@ def getDistances(xc, xd, var, cdiffs):
     return distArray
 ###############################################################################
 def getrow(xd, xc, cdiffs, index, missing):
-    
+
     row = empty(0,dtype=np.double)
     dinst1 = xd[index]
     cinst1 = xc[index]
@@ -49,6 +49,7 @@ def getrow(xd, xc, cdiffs, index, missing):
             d2 = dinst2
             c1 = cinst1
             c2 = cinst2
+            cdf = cdiffs
             
         # discrete first
         dist += len(d1[d1 != d2])
