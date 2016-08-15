@@ -3,6 +3,7 @@ import math
 import pandas as pd
 import sys
 # Thu Jul 21 12:18:42 EDT 2016
+# NO LONGER USED
 ###############################################################################
 def getVariables(header, x, y, options):
     """Get all the needed variables into a Dictionary
