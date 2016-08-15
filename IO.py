@@ -307,7 +307,7 @@ def getxy(header, data, options):
     y = np.ascontiguousarray(y, dtype=np.double)
     x = np.delete(data,pindex,axis=1)
     x = np.ascontiguousarray(x, dtype=np.double)
-    #options['classloc'] = pindex
+    options['classloc'] = pindex
     del header[pindex]  # remove phenotype/class name from header
 
     return x, y
