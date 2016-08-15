@@ -14,8 +14,6 @@
 #      REVISION:  ---
 #===============================================================================
 
-echo "*** building getrow "
-python setup_getrow.py build_ext -i
 echo "*** building mcMultiSURF "
 python setup_mcMultiSURF.py build_ext -i
 echo "*** building MultiSURF "
