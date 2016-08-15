@@ -1,18 +1,19 @@
-# Wed Jul 13 12:08:30 EDT 2016
+# Mon Aug 15 15:01:33 EDT 2016
 import sys
 import time as tm
+import datetime as dt
 ###############################################################################
 def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options):
     from operator import itemgetter
-    import rebateCommon as cmn
-    import pandas as pd
+    import Common as cmn
     import numpy as np
-    
+
     lost = dict()
+    start = tm.time()
     save_x = x
     V = options['verbose']
     if(V): print('Under TURF Control...')
-        
+
     #--------------------------------------------------------------------------
     def adjust_variables(var, attr):
         c = d = 0
@@ -21,32 +22,40 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options):
                 c += 1
             else:
                 d += 1
-              
+
         var['dpct'] = (float(d) / (d + c) * 100, d)
         var['cpct'] = (float(c) / (d + c) * 100, c)
     #--------------------------------------------------------------------------
-    def create_newdata(x):
-        d = []
+    def create_newdata(header, x):
+        dlist = []
         cnt = 0
-        
+        tmp = 0
+        hlist = []
+
+        if(V):
+            print('Reducing attributes by ' + str(options['turfpct']) + '%')
+            sys.stdout.flush()
+
         for a in table:
             if(cnt >= keepcnt):
                 lost[a[0]] = iteration + 1
-                del attr[a[0]]  # added to remove lost attributes
+                hlist.append(a[0])     # append lost attribe names to hlist
                 i = header.index(a[0])
-                del header[i]   # added to remove lost attribute name from header
-                x = np.delete(x, i, axis=1)  # added to remove attribute from data
+                dlist.append(i)
             cnt += 1
 
-        d.append(options['phenotypename'])  # don't forget the class
+        header = np.delete(header,dlist).tolist() #remove orphans from header
+        x = np.delete(x,dlist,axis=1) #remove orphaned attributes from data
+        x = np.ascontiguousarray(x, dtype=np.double)
 
         if(V):
             print('Getting new variables, attributes and distance array')
             sys.stdout.flush()
 
         var = cmn.getVariables(header, x, y, options)
-        adjust_variables(var, attr)
-        cmn.overallDataType(attr,var,options)
+        attr = cmn.getAttributeInfo(header, x, var, options)
+        #adjust_variables(var, attr)
+        #cmn.overallDataType(attr,var,options)
 
         if(V):
             print("---------------  Parameters  ---------------")
@@ -64,13 +73,16 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options):
         begin = tm.time()
         if(var['mdcnt'] > 0 or var['dataType'] == 'mixed'):
             import mmDistance as md
-            dtypes, diffs = cmn.dtypeArray(header,attr,var)
-            distArray = md.getDistances(x, var, dtypes, diffs)
+            diffs, cidx, didx = cmn.dtypeArray(header,attr,var)
+            distArray = md.getDistances(x[:,cidx], x[:,didx], var, diffs[cidx])
+            disttype = "mixed/missing"
         else:
             distArray = cmn.getDistances(x, attr, var)
+            disttype = "discrete/continuous"
 
         if(V):
-            print("get distance array elapsed time(sec) = " + str(tm.time()-begin))
+            print(disttype + " distance array elapsed time(sec) = " 
+                    + str(tm.time()-begin))
             sys.stdout.flush()
 
         return header, x, attr, var, distArray, lost
@@ -89,17 +101,24 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options):
 
         Scores = fun(header,x,y,attr,var,distArray,options)
 
+        if(V):
+            print('Building scores table...')
+            sys.stdout.flush()
+
         for j in range(var['NumAttributes']):
-            if(header[j] == var['phenoTypeName']): continue
-            table.append((header[j], Scores[j]))
+            #if(header[j] == var['phenoTypeName']): continue
+            table.append([header[j], Scores[j]])
             fullscores[header[j]] = (Scores[j])
 
         table = sorted(table,key=itemgetter(1), reverse=True)
 
         if(iteration + 1 < iterations):
             keepcnt = int(numattr - numattr * pct)
-            header,x,attr,var,distArray,lost = create_newdata(x)
+            header,x,attr,var,distArray,lost = create_newdata(header, x)
 
+    if(V):
+        print('Turf finished! Overall time: ' + str(tm.time() - start))
+        sys.stdout.flush()
     return Scores,save_x,var,fullscores,lost,table
 
 ###############################################################################
