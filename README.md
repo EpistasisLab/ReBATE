@@ -24,3 +24,7 @@ Portions of this code has been optimized with Cython routines.
 1. Compile cython file(s)  ./make.sh
 2. Run rebate.py -h for all the available options
 3. No Windows support as yet.
+
+## To Do
+1. Make this an installable package
+2. Convert to Classes
