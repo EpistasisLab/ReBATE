@@ -1,4 +1,4 @@
-# Relief_Based_Algorithms
+# Relief Based Algorithms
 This suite includes stand-alone Python code to run any of
 the included/available Relief-Based algorithms designed for attribute
 filtering/ranking.  These algorithms are a quick way to identify
