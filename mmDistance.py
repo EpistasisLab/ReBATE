@@ -1,4 +1,4 @@
-#Update: Sun Aug 21 15:10:16 EDT 2016
+# Wed Aug 24 14:51:56 EDT 2016
 import sys
 import numpy as np
 from numpy import isnan, where, append, unique, delete, empty
@@ -8,43 +8,52 @@ def getDistances(xc, xd, var, cdiffs):
         without missing data """
 
     distArray = []
-
+    datalen = var['datalen']
     missing = int(var['mdcnt'])
     
-    for index in range(var['datalen']):
+    # get indices of missing data per record
+    if(missing > 0):
+        cindices = list()
+        dindices = list()
+        for i in range(datalen):
+            cindices.append(where(isnan(xc[i]))[0])
+            dindices.append(where(isnan(xd[i]))[0])
+
+    
+    for index in range(datalen):
 
         if(missing > 0):
-            row = getrow_missing(xd, xc, cdiffs, index, missing)
+            row = getrow_missing(xc, xd, cdiffs, index, cindices, dindices)
         else:
-            row = getrow_mixed(xd, xc, cdiffs, index, missing)
+            row = getrow_mixed(xc, xd, cdiffs, index)
 
         row = list(row)
         distArray.append(row)
         
     return distArray
 ###############################################################################
-def getrow_missing(xd, xc, cdiffs, index, missing):
+def getrow_missing(xc, xd, cdiffs, index, cindices, dindices):
 
     row = empty(0,dtype=np.double)
     cinst1 = xc[index]
     dinst1 = xd[index]
-    can = where(isnan(cinst1))[0]  # find idx of missing data
-    dan = where(isnan(dinst1))[0]
+    can = cindices[index]
+    dan = dindices[index]
     for j in range(index):
         dist = 0
         dinst2 = xd[j]
         cinst2 = xc[j]
 
         # continuous
-        bn = where(isnan(cinst2))[0]
-        idx = unique(append(can,bn))   # create unique list
+        cbn = cindices[j]
+        idx = unique(append(can,cbn))   # create unique list
         c1 = delete(cinst1,idx)       # remove elements by idx
         c2 = delete(cinst2,idx)
         cdf = delete(cdiffs,idx)
 
         # discrete
-        bn = where(isnan(dinst2))[0]
-        idx = unique(append(dan,bn))
+        dbn = dindices[j]
+        idx = unique(append(dan,dbn))
         d1 = delete(dinst1,idx)
         d2 = delete(dinst2,idx)
             
@@ -58,7 +67,7 @@ def getrow_missing(xd, xc, cdiffs, index, missing):
 
     return row
 ##############################################################################
-def getrow_mixed(xd, xc, cdiffs, index, missing):
+def getrow_mixed(xc, xd, cdiffs, index):
 
     row = empty(0,dtype=np.double)
     d1 = xd[index]
