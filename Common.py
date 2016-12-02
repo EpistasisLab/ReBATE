@@ -2,7 +2,7 @@ import numpy as np
 import math
 import pandas as pd
 import sys
-# Thu Jul 21 12:18:42 EDT 2016
+# Fri Dec  2 14:37:36 EST 2016
 ###############################################################################
 def getVariables(header, x, y, options):
     """Get all the needed variables into a Dictionary
@@ -97,7 +97,7 @@ def overallDataType(attr, var, options):
     var['classType'] = pheno
 
 ###############################################################################
-def getDistances(x, attr, var):
+def getDistances(x, attr, var, cidx, didx):
     """This creates the distance array for only discrete or continuous data with
        no missing data"""
     from scipy.spatial.distance import pdist, squareform
@@ -105,6 +105,7 @@ def getDistances(x, attr, var):
     def pre_normalize(x):
         idx = 0
         for i in attr:
+            if(attr[i][0] == 'discrete'): continue
             cmin = attr[i][2]
             diff = attr[i][3]
             x[idx] -= cmin
@@ -118,6 +119,13 @@ def getDistances(x, attr, var):
 
     if(dtype == 'discrete'):
         return squareform(pdist(x,metric='hamming'))
+
+    if(dtype == 'mixed'):
+        d_dist = squareform(pdist(x[:,didx],metric='hamming'))
+        xc = pre_normalize(x[:,cidx])
+        c_dist = squareform(pdist(xc,metric='cityblock'))
+        return np.add(d_dist, c_dist) / numattr
+
 
     else: #(dtype == 'continuous'):
         x = pre_normalize(x)
@@ -146,19 +154,11 @@ def dtypeArray(header, attr, var):
     cidx = np.ascontiguousarray(cidx, dtype=np.int32)
     didx = np.where(attrtype == 0)[0]   # where returns a tuple
     didx = np.ascontiguousarray(didx, dtype=np.int32)
-    #attrtype = np.ascontiguousarray(attrtype, dtype=np.int32)
     
     attrdiff = np.array(attrdiff)
     attrdiff = np.ascontiguousarray(attrdiff, dtype=np.double)
     return attrdiff, cidx, didx
 
-###############################################################################
-def memory_usage_psutil():
-    # return the memory usage in MB
-    import psutil, os
-    process = psutil.Process(os.getpid())
-    mem = process.get_memory_info()[0] / float(2 ** 20)
-    return mem
 ###############################################################################
 def printf(format, *args):
     sys.stdout.write(format % args)

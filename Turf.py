@@ -1,4 +1,4 @@
-# Mon Aug 15 15:01:33 EDT 2016
+# Tue Aug 16 13:26:42 EDT 2016
 import sys
 import time as tm
 import datetime as dt
@@ -54,8 +54,6 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options):
 
         var = cmn.getVariables(header, x, y, options)
         attr = cmn.getAttributeInfo(header, x, var, options)
-        #adjust_variables(var, attr)
-        #cmn.overallDataType(attr,var,options)
 
         if(V):
             print("---------------  Parameters  ---------------")
@@ -71,14 +69,14 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options):
             sys.stdout.flush()
 
         begin = tm.time()
-        if(var['mdcnt'] > 0 or var['dataType'] == 'mixed'):
+        diffs, cidx, didx = cmn.dtypeArray(header, attr, var)
+        if(var['mdcnt'] > 0):
             import mmDistance as md
-            diffs, cidx, didx = cmn.dtypeArray(header,attr,var)
             distArray = md.getDistances(x[:,cidx], x[:,didx], var, diffs[cidx])
-            disttype = "mixed/missing"
+            disttype = "missing"
         else:
-            distArray = cmn.getDistances(x, attr, var)
-            disttype = "discrete/continuous"
+            distArray = cmn.getDistances(x, attr, var, cidx, didx)
+            disttype = "discrete/continuous/mixed"
 
         if(V):
             print(disttype + " distance array elapsed time(sec) = " 
@@ -106,7 +104,6 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options):
             sys.stdout.flush()
 
         for j in range(var['NumAttributes']):
-            #if(header[j] == var['phenoTypeName']): continue
             table.append([header[j], Scores[j]])
             fullscores[header[j]] = (Scores[j])
 
@@ -120,5 +117,4 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options):
         print('Turf finished! Overall time: ' + str(tm.time() - start))
         sys.stdout.flush()
     return Scores,save_x,var,fullscores,lost,table
-
 ###############################################################################

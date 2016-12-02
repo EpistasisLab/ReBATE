@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #  REBATE CLI
-# Mon Aug 15 12:34:58 EDT 2016
+# Fri Dec  2 14:31:05 EST 2016
 ###############################################################################
 import time as tm
 import sys
@@ -93,14 +93,14 @@ if(V):
 # if missing and/or mixed data use the mixedDistance function
 #
 begin = tm.time()
-if(var['mdcnt'] > 0 or var['dataType'] == 'mixed'):
+diffs, cidx, didx = cmn.dtypeArray(header, attr, var)
+if(var['mdcnt'] > 0):
     import mmDistance as md
-    diffs, cidx, didx = cmn.dtypeArray(header, attr, var)
     distArray = md.getDistances(x[:,cidx], x[:,didx], var, diffs[cidx])
-    disttype = "mixed/missing"
+    disttype = "missing"
 else:
-    distArray = cmn.getDistances(x, attr, var)
-    disttype = "discrete/continuous"
+    distArray = cmn.getDistances(x, attr, var, cidx, didx)
+    disttype = "discrete/continuous/mixed"
 if(V):
     ctime = "[" + tm.strftime("%H:%M:%S") + "]"
     print(ctime + " " + disttype + " distance array time(sec) = " 
