@@ -49,7 +49,7 @@ def getArguments():
     parser.add_argument("-f", "--filename", type=str, \
         help="name of training data file (REQUIRED)")
     parser.add_argument("-k", "--knearestneighbors", type=int, \
-        help="k number of neighbors for ReliefF to use (default=10)")
+        help="k number of neighbors for ReliefF to use (default=100)")
     parser.add_argument("-m", "--missingdata", type=str, \
         help="missing data designator or string (default=NA)")
     parser.add_argument("-o", "--outputdir", type=str, \
@@ -93,7 +93,7 @@ def getArguments():
     options['discretelimit'] = discretelimit
     # ------------------------------------------ #
     if(args.knearestneighbors == None):
-        neighbors = 10
+        neighbors = 100
     else:
         neighbors = args.knearestneighbors
     options['neighbors'] = neighbors
