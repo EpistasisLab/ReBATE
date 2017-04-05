@@ -23,7 +23,7 @@ import numpy as np
 import math
 import pandas as pd
 import sys
-# Fri Dec  2 14:37:36 EST 2016
+# Wed Apr  5 15:16:12 CDT 2017
 ###############################################################################
 def getVariables(header, x, y, options):
     """Get all the needed variables into a Dictionary
@@ -91,7 +91,7 @@ def getAttributeInfo(header, x, var, options):
 # This will help with future directions.  Adding this to the variables
 # dictionary.  This is called from within getAttributeInfo()
 def overallDataType(attr, var, options):
-
+    """ adds overall datatype of the data and class to var dictionary """
     D = False; C = False # set tmp booleons
 
     for key in attr.keys():
@@ -127,10 +127,11 @@ def getDistances(x, attr, var, cidx, didx):
         idx = 0
         for i in attr:
             if(attr[i][0] == 'discrete'): continue
+            print(x[idx][:3])
             cmin = attr[i][2]
             diff = attr[i][3]
-            x[idx] -= cmin
-            x[idx] /= diff
+            x[:,idx] -= cmin
+            x[:,idx] /= diff
             idx += 1
 
         return x
