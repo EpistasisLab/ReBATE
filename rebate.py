@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #  REBATE CLI
-# Fri Dec  2 14:31:05 EST 2016
+# Thu Apr  6 13:15:38 CDT 2017
 """
 Copyright (c) 2016 Peter R. Schmitt and Ryan J. Urbanowicz
 
@@ -89,7 +89,13 @@ var  = cmn.getVariables(header, x, y, options)
 #    attributes['ATTRIBUTE'] = ('continuous/discrete', MAX/None, MIN,None)
 #
 attr = cmn.getAttributeInfo(header, x, var, options)
-
+# 
+# create header list (cheader) with must headers that have continuous data
+#
+cheader = []
+for i in header:
+    if attr[i][0] == 'continuous':
+        cheader.append(i)  
 if(V):
     print("---------------  Parameters  ---------------")
     print("datafile:   " + options['basename'])
@@ -120,7 +126,7 @@ if(var['mdcnt'] > 0):
     distArray = md.getDistances(x[:,cidx], x[:,didx], var, diffs[cidx])
     disttype = "missing"
 else:
-    distArray = cmn.getDistances(x, attr, var, cidx, didx)
+    distArray = cmn.getDistances(x, attr, var, cidx, didx, cheader)
     disttype = "discrete/continuous/mixed"
 if(V):
     ctime = "[" + tm.strftime("%H:%M:%S") + "]"

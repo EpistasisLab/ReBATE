@@ -23,7 +23,7 @@ import numpy as np
 import math
 import pandas as pd
 import sys
-# Wed Apr  5 15:24:19 CDT 2017
+# Thu Apr  6 13:15:17 CDT 2017
 ###############################################################################
 def getVariables(header, x, y, options):
     """Get all the needed variables into a Dictionary
@@ -118,15 +118,15 @@ def overallDataType(attr, var, options):
     var['classType'] = pheno
 
 ###############################################################################
-def getDistances(x, attr, var, cidx, didx):
-    """This creates the distance array for only discrete or continuous data with
-       no missing data"""
+def getDistances(x, attr, var, cidx, didx, cheader):
+    """ This creates the distance array for only discrete or continuous data 
+        with no missing data """
     from scipy.spatial.distance import pdist, squareform
     #--------------------------------------------------------------------------
     def pre_normalize(x):
         idx = 0
-        for i in attr:
-            if(attr[i][0] == 'discrete'): continue
+        for i in cheader:
+#           if(attr[i][0] == 'discrete'): continue
             cmin = attr[i][2]
             diff = attr[i][3]
             x[:,idx] -= cmin
@@ -146,7 +146,6 @@ def getDistances(x, attr, var, cidx, didx):
         xc = pre_normalize(x[:,cidx])
         c_dist = squareform(pdist(xc,metric='cityblock'))
         return np.add(d_dist, c_dist) / numattr
-
 
     else: #(dtype == 'continuous'):
         x = pre_normalize(x)
