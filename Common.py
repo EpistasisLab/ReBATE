@@ -126,7 +126,6 @@ def getDistances(x, attr, var, cidx, didx, cheader):
     def pre_normalize(x):
         idx = 0
         for i in cheader:
-#           if(attr[i][0] == 'discrete'): continue
             cmin = attr[i][2]
             diff = attr[i][3]
             x[:,idx] -= cmin
