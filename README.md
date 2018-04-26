@@ -28,7 +28,7 @@ This code is most appropriate for more experienced users or those primarily inte
 We recommend scikit-learn users, Windows operating system users, beginners, or those looking for the most recent ReBATE developments to instead use our alternate [scikit-rebate](https://github.com/EpistasisLab/scikit-rebate) implementation.
 
 ## Cython (Important Notice)
-NOTICE: As is, this code will not run on your local platform! Portions of this code has been optimized with Cython routines for code speedup. As a result, before being able to use 
+NOTICE: As is, this code will not run on your local platform! Portions of this code have been optimized with Cython routines for code speedup. As a result, before being able to use 
 ReBATE on a given operating system (i.e. Linux, Mac, or Windows), critical binary files must be compiled as a one time step (or any time the underlying source code is modified, or
 any time an updated version of ReBATE is downloaded to your system.  Compiling the necessary binary files is very easy to do on Mac or Linux systems (because they include a C compiler). However Windows users will unfortunately have to go through a few extra hurdles in order to complete this one time step. If you wish to avoid this hassle, please see our alternate [scikit-rebate](https://github.com/EpistasisLab/scikit-rebate) implementation.
 
