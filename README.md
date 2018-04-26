@@ -1,4 +1,6 @@
-Package information: ![Python 3.5](https://img.shields.io/badge/python-3.6-blue.svg)
+Package information: ![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)
+![Python 3.5](https://img.shields.io/badge/python-3.6-blue.svg)
+![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)
 
 # ReBATE (Relief-based Algorithm Training Environment) 
 This package includes stand-alone Python code to run any of the included/available [Relief-Based algorithms (RBAs)](https://en.wikipedia.org/wiki/Relief_(feature_selection)) 
@@ -27,10 +29,24 @@ This code is most appropriate for more experienced users or those primarily inte
 
 We recommend scikit-learn users, Windows operating system users, beginners, or those looking for the most recent ReBATE developments to instead use our alternate [scikit-rebate](https://github.com/EpistasisLab/scikit-rebate) implementation.
 
+## License
+Please see the [repository license](https://github.com/EpistasisLab/ReBATE/blob/master/LICENSE) for the licensing and usage information for scikit-rebate.
+Generally, we have licensed scikit-rebate to make it as widely usable as possible.
+
 ## Cython (Important Notice)
 NOTICE: As is, this code will not run on your local platform! Portions of this code have been optimized with Cython routines for code speedup. As a result, before being able to use 
 ReBATE on a given operating system (i.e. Linux, Mac, or Windows), critical binary files must be compiled as a one time step (or any time the underlying source code is modified, or
 any time an updated version of ReBATE is downloaded to your system.  Compiling the necessary binary files is very easy to do on Mac or Linux systems (because they include a C compiler). However Windows users will unfortunately have to go through a few extra hurdles in order to complete this one time step. If you wish to avoid this hassle, please see our alternate [scikit-rebate](https://github.com/EpistasisLab/scikit-rebate) implementation.
+
+## Installation
+All of the necessary Python packages can be installed via the [Anaconda Python distribution](https://www.continuum.io/downloads), which we strongly recommend that you use. We also strongly recommend that you use Python 3 over Python 2 if you're given the choice.
+
+ReBATE requires that the following Python packages be installed:
+
+
+
+Please [file a new issue](https://github.com/EpistasisLab/scikit-rebate/issues/new) if you run into installation problems.
+
 
 ## How to run
 1. Compile cython file(s)  ./make.sh
