@@ -1,0 +1,27 @@
+site_name: ReBATE
+site_url: http://EpistasisLab.github.io/ReBATE
+site_author: Ryan J. Urbanowicz
+site_description: A stand alone Python implementation of ReBATE, a suite of Relief-based feature selection algorithms for Machine Learning.
+
+repo_url: https://github.com/EpistasisLab/ReBATE
+edit_uri: edit/master/docs_sources/
+docs_dir: docs_sources/
+site_dir: docs/
+theme: readthedocs
+
+markdown_extensions:
+  - tables
+  - fenced_code
+
+copyright: Developed by <a href="https://github.com/pschmitt52">Pete Schmitt</a>, and <a href="http://ryanurbanowicz.com">Ryan J. Urbanowicz</a> at the University of Pennsylvania
+
+pages:
+- Home: index.md
+- Installation: installing.md
+- Using skrebate: using.md
+- Examples:
+  - examples/GAMETES_Example.md
+- Contributing: contributing.md
+- Release Notes: releases.md
+- Citing: citing.md
+- Support: support.md
