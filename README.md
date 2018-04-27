@@ -75,6 +75,13 @@ Simply run the following file included with ReBATE to produce the .c and (.so or
 
 If there is need to recompile the Cython files, first remove the previous .c and (.so or .pyd) files by running: ./clean.sh
 
+## Running ReBATE
+Run rebate.py -h for all the available options. 
+
+For information on how to run the different Relief algorithms available in this package and how to use them, please refer to our [usage documentation](https://EpistasisLab.github.io/ReBATE/using/)
+
+Further instructions and examples will be provided in the near future. 
+
 ## Contributing to ReBATE
 
 We welcome you to [check the existing issues](https://github.com/EpistasisLab/ReBATE/issues/) for bugs or enhancements to work on. If you have an idea for an extension to ReBATE, please [file a new issue](https://github.com/EpistasisLab/ReBATE/issues/new) so we can discuss it.
