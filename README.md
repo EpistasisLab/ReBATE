@@ -27,11 +27,11 @@ Built into this code, is a strategy to 'automatically' detect from the loaded da
 Of our two initial ReBATE software releases, this stand-alone version primarily focuses on improving run-time with the use of Cython. 
 This code is most appropriate for more experienced users or those primarily interested in reducing analysis run time. 
 
-We recommend scikit-learn users, Windows operating system users, beginners, or those looking for the most recent ReBATE developments to instead use our alternate [scikit-rebate](https://github.com/EpistasisLab/scikit-rebate) implementation.
+We recommend that scikit-learn users, Windows operating system users, beginners, or those looking for the most recent ReBATE developments to instead use our alternate [scikit-rebate](https://github.com/EpistasisLab/scikit-rebate) implementation.
 
 ## License
-Please see the [repository license](https://github.com/EpistasisLab/ReBATE/blob/master/LICENSE) for the licensing and usage information for scikit-rebate.
-Generally, we have licensed scikit-rebate to make it as widely usable as possible.
+Please see the [repository license](https://github.com/EpistasisLab/ReBATE/blob/master/LICENSE) for the licensing and usage information for ReBATE.
+Generally, we have licensed ReBATE to make it as widely usable as possible.
 
 ## Cython (Important Notice)
 NOTICE: As is, this code will not run on your local platform! Portions of this code have been optimized with Cython routines for code speedup. As a result, before being able to use 
@@ -39,13 +39,21 @@ ReBATE on a given operating system (i.e. Linux, Mac, or Windows), critical binar
 any time an updated version of ReBATE is downloaded to your system.  Compiling the necessary binary files is very easy to do on Mac or Linux systems (because they include a C compiler). However Windows users will unfortunately have to go through a few extra hurdles in order to complete this one time step. If you wish to avoid this hassle, please see our alternate [scikit-rebate](https://github.com/EpistasisLab/scikit-rebate) implementation.
 
 ## Installation
+### Prerequisites
 All of the necessary Python packages can be installed via the [Anaconda Python distribution](https://www.continuum.io/downloads), which we strongly recommend that you use. We also strongly recommend that you use Python 3 over Python 2 if you're given the choice.
 
-ReBATE requires that the following Python packages be installed:
+ReBATE requires that the following external Python packages be installed (all included in Anaconda):
+argparse, time, sys, os, IO, Common, numpy, math, pandas, scipy.spatial.distance, operator, csv, distutils.core, distutils.extension, Cython.Distutils, datetime
 
+NumPy and SciPy can be installed in Anaconda via the command:
 
+```
+conda install numpy scipy
+```
+### Compile binaries for Cython
+Once these prerequisites are installed, it will be necessary to compile the cython code. This happens in two stages (1) a .pyx file is compiled by cython to a .c file, then (2) the .c file is compiled by a C compiler to a .so file (or a .pyd file for Windows). 
 
-Please [file a new issue](https://github.com/EpistasisLab/scikit-rebate/issues/new) if you run into installation problems.
+Please [file a new issue](https://github.com/EpistasisLab/ReBATE/issues/new) if you run into installation problems.
 
 
 ## How to run
