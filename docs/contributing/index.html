@@ -146,31 +146,31 @@
           <div role="main">
             <div class="section">
               
-                <p>We welcome you to <a href="https://github.com/EpistasisLab/scikit-rebate/issues/">check the existing issues</a> for bugs or enhancements to work on. If you have an idea for an extension to scikit-rebate, please <a href="https://github.com/EpistasisLab/scikit-rebate/issues//new">file a new issue</a> so we can discuss it.</p>
+                <p>We welcome you to <a href="https://github.com/EpistasisLab/ReBATE/issues/">check the existing issues</a> for bugs or enhancements to work on. If you have an idea for an extension to ReBATE, please <a href="https://github.com/EpistasisLab/ReBATE/issues//new">file a new issue</a> so we can discuss it.</p>
 <h2 id="project-layout">Project layout</h2>
-<p>The latest stable release of scikit-rebate is on the <a href="https://github.com/EpistasisLab/scikit-rebate/tree/master">master branch</a>, whereas the latest version of scikit-rebate in development is on the <a href="https://github.com/EpistasisLab/scikit-rebate/tree/development">development branch</a>. Make sure you are looking at and working on the correct branch if you're looking to contribute code.</p>
+<p>The latest stable release of ReBATE is on the <a href="https://github.com/EpistasisLab/ReBATE/tree/master">master branch</a>, whereas the latest version of scikit-rebate in development is on the <a href="https://github.com/EpistasisLab/ReBATE/tree/development">development branch</a>. Make sure you are looking at and working on the correct branch if you're looking to contribute code.</p>
 <p>In terms of directory structure:</p>
 <ul>
-<li>All of scikit-rebate's code sources are in the <code>skrebate</code> directory</li>
+<li>All of ReBATE's code sources are in the base directory</li>
 <li>The documentation sources are in the <code>docs_sources</code> directory</li>
 <li>The latest documentation build is in the <code>docs</code> directory</li>
-<li>Unit tests for scikit-rebate are in the <code>tests.py</code> file</li>
+<li>Unit tests for ReBATE are in the <code>tests.py</code> file</li>
 </ul>
 <p>Make sure to familiarize yourself with the project layout before making any major contributions, and especially make sure to send all code changes to the <code>development</code> branch.</p>
 <h2 id="how-to-contribute">How to contribute</h2>
-<p>The preferred way to contribute to scikit-rebate is to fork the 
-<a href="https://github.com/EpistasisLab/scikit-rebate/">main repository</a> on
+<p>The preferred way to contribute to ReBATE is to fork the 
+<a href="https://github.com/EpistasisLab/ReBATE/">main repository</a> on
 GitHub:</p>
 <ol>
 <li>
-<p>Fork the <a href="https://github.com/EpistasisLab/scikit-rebate/">project repository</a>:
+<p>Fork the <a href="https://github.com/EpistasisLab/ReBATE/">project repository</a>:
    click on the 'Fork' button near the top of the page. This creates
    a copy of the code under your account on the GitHub server.</p>
 </li>
 <li>
 <p>Clone this copy to your local disk:</p>
-<pre><code>  $ git clone git@github.com:YourLogin/scikit-rebate.git
-  $ cd scikit-rebate
+<pre><code>  $ git clone git@github.com:YourLogin/ReBATE.git
+  $ cd ReBATE
 </code></pre>
 </li>
 <li>
@@ -179,7 +179,7 @@ GitHub:</p>
 </code></pre>
 </li>
 <li>
-<p>Make sure your local environment is setup correctly for development. Installation instructions are almost identical to <a href="../installing/">the user instructions</a> except that scikit-rebate should <em>not</em> be installed. If you have scikit-rebate installed on your computer, then make sure you are using a virtual environment that does not have scikit-rebate installed. Furthermore, you should make sure you have installed the <code>nose</code> package into your development environment so that you can test changes locally.</p>
+<p>Make sure your local environment is setup correctly for development. Installation instructions are almost identical to <a href="../installing/">the user instructions</a> except that ReBATE should <em>not</em> be installed. If you have ReBATE installed on your computer, then make sure you are using a virtual environment that does not have ReBATE installed. Furthermore, you should make sure you have installed the <code>nose</code> package into your development environment so that you can test changes locally.</p>
 <pre><code>  $ conda install nose
 </code></pre>
 </li>
@@ -187,7 +187,7 @@ GitHub:</p>
 <p>Start making changes on your newly created branch, remembering to never work on the <code>master</code> branch! Work on this copy on your computer using Git to do the version control.</p>
 </li>
 <li>
-<p>Once some changes are saved locally, you can use your tweaked version of scikit-rebate by navigating to the project's base directory and running scikit-rebate in a script. You can use an example script in our <a href="../examples/GAMETES_Example/">examples directory</a> to begin your testing.</p>
+<p>Once some changes are saved locally, you can use your tweaked version of ReBATE by navigating to the project's base directory and running ReBATE in a script. You can use an example script in our <a href="../examples/GAMETES_Example/">examples directory</a> to begin your testing.</p>
 </li>
 <li>
 <p>To check your changes haven't broken any existing tests and to check new tests you've added pass run the following (note, you must have the <code>nose</code> package installed within your dev environment for this to work):</p>
@@ -204,24 +204,24 @@ GitHub:</p>
 <p>to record your changes in Git, then push them to GitHub with:</p>
 <pre><code>      $ git push -u origin my-contribution
 </code></pre>
-<p>Finally, go to the web page of your fork of the scikit-rebate repo, and click 'Pull Request' (PR) to send your changes to the maintainers for review. Make sure that you send your PR to the <code>development</code> branch, as the <code>master</code> branch is reserved for the latest stable release. This will start the CI server to check all the project's unit tests run and send an email to the maintainers.</p>
+<p>Finally, go to the web page of your fork of the ReBATE repo, and click 'Pull Request' (PR) to send your changes to the maintainers for review. Make sure that you send your PR to the <code>development</code> branch, as the <code>master</code> branch is reserved for the latest stable release. This will start the CI server to check all the project's unit tests run and send an email to the maintainers.</p>
 <p>(If any of the above seems like magic to you, then look up the 
 <a href="http://git-scm.com/documentation">Git documentation</a> on the web.)</p>
 <h2 id="before-submitting-your-pull-request">Before submitting your pull request</h2>
 <p>Before you submit a pull request for your contribution, please work through this checklist to make sure that you have done everything necessary so we can efficiently review and accept your changes.</p>
-<p>If your contribution changes scikit-rebate in any way:</p>
+<p>If your contribution changes ReBATE in any way:</p>
 <ul>
 <li>
-<p>Update the <a href="https://github.com/EpistasisLab/scikit-rebate/tree/master/docs_sources">documentation</a> so all of your changes are reflected there.</p>
+<p>Update the <a href="https://github.com/EpistasisLab/ReBATE/tree/master/docs_sources">documentation</a> so all of your changes are reflected there.</p>
 </li>
 <li>
-<p>Update the <a href="https://github.com/EpistasisLab/scikit-rebate/blob/master/README.md">README</a> if anything there has changed.</p>
+<p>Update the <a href="https://github.com/EpistasisLab/ReBATE/blob/master/README.md">README</a> if anything there has changed.</p>
 </li>
 </ul>
 <p>If your contribution involves any code changes:</p>
 <ul>
 <li>
-<p>Update the <a href="https://github.com/EpistasisLab/scikit-rebate/blob/master/tests.py">project unit tests</a> to test your code changes.</p>
+<p>Update the <a href="https://github.com/EpistasisLab/ReBATE/blob/master/tests.py">project unit tests</a> to test your code changes.</p>
 </li>
 <li>
 <p>Make sure that your code is properly commented with <a href="https://www.python.org/dev/peps/pep-0257/">docstrings</a> and comments explaining your rationale behind non-obvious coding practices.</p>
@@ -230,20 +230,20 @@ GitHub:</p>
 <p>If your contribution requires a new library dependency:</p>
 <ul>
 <li>
-<p>Double-check that the new dependency is easy to install via <code>pip</code> or Anaconda and supports both Python 2 and 3. If the dependency requires a complicated installation, then we most likely won't merge your changes because we want to keep scikit-rebate easy to install.</p>
+<p>Double-check that the new dependency is easy to install via <code>pip</code> or Anaconda and supports both Python 2 and 3. If the dependency requires a complicated installation, then we most likely won't merge your changes because we want to keep ReBATE easy to install.</p>
 </li>
 <li>
-<p>Add a line to pip install the library to <a href="https://github.com/EpistasisLab/scikit-rebate/blob/master/ci/.travis_install.sh#L46">.travis_install.sh</a></p>
+<p>Add a line to pip install the library to <a href="https://github.com/EpistasisLab/ReBATE/blob/master/ci/.travis_install.sh#L46">.travis_install.sh</a></p>
 </li>
 <li>
-<p>Add a line to print the version of the library to <a href="https://github.com/EpistasisLab/scikit-rebate/blob/master/ci/.travis_install.sh#L56">.travis_install.sh</a></p>
+<p>Add a line to print the version of the library to <a href="https://github.com/EpistasisLab/ReBATE/blob/master/ci/.travis_install.sh#L56">.travis_install.sh</a></p>
 </li>
 <li>
-<p>Similarly add a line to print the version of the library to <a href="https://github.com/EpistasisLab/scikit-rebate/blob/master/ci/.travis_test.sh#L16">.travis_test.sh</a></p>
+<p>Similarly add a line to print the version of the library to <a href="https://github.com/EpistasisLab/ReBATE/blob/master/ci/.travis_test.sh#L16">.travis_test.sh</a></p>
 </li>
 </ul>
 <h2 id="updating-the-documentation">Updating the documentation</h2>
-<p>We use <a href="http://www.mkdocs.org/">mkdocs</a> to manage our <a href="http://EpistasisLab.github.io/scikit-rebate/">documentation</a>. This allows us to write the docs in Markdown and compile them to HTML as needed. Below are a few useful commands to know when updating the documentation. Make sure that you are running them in the base repository directory.</p>
+<p>We use <a href="http://www.mkdocs.org/">mkdocs</a> to manage our <a href="http://EpistasisLab.github.io/ReBATE/">documentation</a>. This allows us to write the docs in Markdown and compile them to HTML as needed. Below are a few useful commands to know when updating the documentation. Make sure that you are running them in the base repository directory.</p>
 <ul>
 <li>
 <p><code>mkdocs serve</code>: Hosts of a local version of the documentation that you can access at the provided URL. The local version will update automatically as you save changes to the documentation.</p>
@@ -252,7 +252,7 @@ GitHub:</p>
 <p><code>mkdocs build --clean</code>: Creates a fresh build of the documentation in HTML. Always run this before deploying the documentation to GitHub.</p>
 </li>
 <li>
-<p><code>mkdocs gh-deploy</code>: Deploys the documentation to GitHub. If you're deploying on your fork of scikit-rebate, the online documentation should be accessible at <code>http://&lt;YOUR GITHUB USERNAME&gt;.github.io/scikit-rebate/</code>. Generally, you shouldn't need to run this command because you can view your changes with <code>mkdocs serve</code>.</p>
+<p><code>mkdocs gh-deploy</code>: Deploys the documentation to GitHub. If you're deploying on your fork of ReBATE, the online documentation should be accessible at <code>http://&lt;YOUR GITHUB USERNAME&gt;.github.io/ReBATE/</code>. Generally, you shouldn't need to run this command because you can view your changes with <code>mkdocs serve</code>.</p>
 </li>
 </ul>
 <h2 id="after-submitting-your-pull-request">After submitting your pull request</h2>
