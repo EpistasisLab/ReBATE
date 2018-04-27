@@ -68,7 +68,7 @@ There are a number of possible ways to get the C compiler working on your Window
 
 4.) At this point you should be able to compile Cython as described below.
 
-### Compile Binaries For Cython
+### Compile Cython
 Once these prerequisites are installed, it will be necessary to compile the Cython code on the respective operating system within which ReBATE will be run. It is only necessary to do this once, not every time ReBATE is run. This happens in two stages (1) a .pyx file is compiled by cython to a .c file, then (2) the .c file is compiled by a C compiler to a .so file (or a .pyd file for Windows). 
 
 Simply run the following file included with ReBATE to produce the .c and (.so or .pyd) files:  ./make.sh
