@@ -27,7 +27,7 @@ Built into this code, is a strategy to 'automatically' detect from the loaded da
 Of our two initial ReBATE software releases, this stand-alone version primarily focuses on improving run-time with the use of Cython. 
 This code is most appropriate for more experienced users or those primarily interested in reducing analysis run time. 
 
-We recommend that scikit-learn users, Windows operating system users, beginners, or those looking for the most recent ReBATE developments to instead use our alternate [scikit-rebate](https://github.com/EpistasisLab/scikit-rebate) implementation.
+We recommend that scikit-learn users, Windows operating system users, beginners, or those looking for the most recent ReBATE developments to instead use our alternate [scikit-rebate](https://github.com/EpistasisLab/scikit-rebate) implementation. ReBATE can be run on Windows with some additional installation steps and possible troubleshooting outlined below. 
 
 ## License
 Please see the [repository license](https://github.com/EpistasisLab/ReBATE/blob/master/LICENSE) for the licensing and usage information for ReBATE.
