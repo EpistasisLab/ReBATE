@@ -46,4 +46,15 @@ python -c "import numpy; print('numpy %s' % numpy.__version__)"
 python -c "import scipy; print('scipy %s' % scipy.__version__)"
 python -c "import sklearn; print('sklearn %s' % sklearn.__version__)"
 python -c "import pandas; print('pandas %s' % pandas.__version__)"
+
+#Add lines from make.sh
+echo "*** building mcMultiSURFStar "
+python setup_mcMultiSURFStar.py build_ext -i
+echo "*** building MultiSURFStar "
+python setup_MultiSURFStar.py build_ext -i
+echo "*** building ReliefF "
+python setup_relieff.py build_ext -i
+echo "*** building SURF "
+python setup_surf.py build_ext -i
+
 python setup.py build_ext --inplace

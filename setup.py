@@ -10,7 +10,7 @@ def calculate_version():
 package_version = calculate_version()
 
 setup(
-    name='rebate',
+    name='ReBATE',
     version=package_version,
     author='Pete Schmitt, and Ryan J. Urbanowicz',
     author_email='ryanurb@upenn.edu',
