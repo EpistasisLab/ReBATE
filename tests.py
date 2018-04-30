@@ -128,6 +128,7 @@ if(V):
 
 
 def test_relieff():
+    """ Ensure that relieff appears functional """
     from rebate import relieff as R
     Scores = R.runReliefF(header,x,y,attr,var,distArray,options)
     print(Scores)
