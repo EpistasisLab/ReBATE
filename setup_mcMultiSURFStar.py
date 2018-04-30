@@ -27,6 +27,6 @@ import numpy
 
 setup(
     cmdclass = {'build_ext': build_ext},
-    ext_modules = [Extension("mcms", sources=["mcMultiSURF.pyx"],
+    ext_modules = [Extension("mcmss", sources=["mcMultiSURFStar.pyx"],
                              include_dirs=[numpy.get_include()])],
 )

@@ -23,7 +23,7 @@ from distutils.core import setup
 from distutils.extension import Extension
 from Cython.Distutils import build_ext
 
-exts = [Extension("multisurf", ["MultiSURF.pyx"],)]
+exts = [Extension("multisurfstar", ["MultiSURFStar.pyx"],)]
 setup(
 cmdclass = {'build_ext': build_ext},
 ext_modules = exts,

@@ -40,9 +40,9 @@ V = options['verbose']
 turfpct = int(options['turfpct'])
 algorithm = options['algorithm']
 if(algorithm != 'relieff' and algorithm != 'surf' and algorithm != 'surfstar'
-                          and algorithm != 'multisurf'):
+                          and algorithm != 'multisurfstar'):
     print("algorithm " + algorithm + " is not available")
-    print("Use relieff, surf, surfstar or multisurf")
+    print("Use relieff, surf, surfstar or multisurfstar")
     sys.exit(1)
 
 if(V):
@@ -146,12 +146,12 @@ if(turfpct > 0):  # Use TURF
         import relieff as R
         fun = R.runReliefF
 
-    if(algorithm == 'multisurf'):
+    if(algorithm == 'multisurfstar'):
         if(var['classType'] == 'multiclass'):
-            import mcms as MS
+            import mcmss as MS
         else:
-            import multisurf as MS
-        fun = MS.runMultiSURF
+            import multisurfstar as MS
+        fun = MS.runMultiSURFstar
     if(algorithm == 'surf' or algorithm == 'surfstar'):
         import surf as S
         fun = S.runSURF
@@ -164,12 +164,12 @@ elif(algorithm == 'relieff'):
     import relieff as R
     Scores = R.runReliefF(header,x,y,attr,var,distArray,options)
 
-elif(algorithm == 'multisurf'):
+elif(algorithm == 'multisurfstar'):
     if(var['classType'] == 'multiclass'):
-        import mcms as MS
+        import mcmss as MS
     else:
-        import multisurf as MS
-    Scores = MS.runMultiSURF(header, x, y, attr, var, distArray, options)
+        import multisurfstar as MS
+    Scores = MS.runMultiSURFStar(header, x, y, attr, var, distArray, options)
 
 elif(algorithm == 'surf' or algorithm =='surfstar'):
     import surf as S

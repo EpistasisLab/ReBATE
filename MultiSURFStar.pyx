@@ -25,8 +25,8 @@ import sys
 import numpy as np
 from math import isnan
 ###############################################################################
-# get multiSURF scores
-def runMultiSURF(header, double[:,::1] x, double[::1] y, attr, var, distArray, 
+# get multiSURFStar scores
+def runMultiSURFStar(header, double[:,::1] x, double[::1] y, attr, var, distArray, 
                  options):
     
     V = options['verbose']
@@ -175,7 +175,7 @@ def runMultiSURF(header, double[:,::1] x, double[::1] y, attr, var, distArray,
         ScoreList[k]+=diff
 
     if(V):
-        print("MultiSURF scores elapsed time = " + str(tm.time() - start))
+        print("MultiSURFStar scores elapsed time = " + str(tm.time() - start))
         sys.stdout.flush()
 
     return ScoreList

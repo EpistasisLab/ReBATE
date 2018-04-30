@@ -26,10 +26,10 @@ import numpy as np
 from math import isnan
 #from rebateCommon import getMultiClassMap
 ###############################################################################
-# get multiSURF scores for multiclass Class
-def runMultiSURF(header, double[:,::1] x, double[::1] y, attr, var, distArray, 
+# get multiSURFStar scores for multiclass Class
+def runMultiSURFStar(header, double[:,::1] x, double[::1] y, attr, var, distArray, 
                  options):
-    """ Controls major MultiSURF loops. """
+    """ Controls major MultiSURFStar loops. """
 
     V = options['verbose']
     start = tm.time()
@@ -203,6 +203,6 @@ def runMultiSURF(header, double[:,::1] x, double[::1] y, attr, var, distArray,
                 
         
     if(V):
-        print("MultiSURF scoring elapsed time = " + str(tm.time() - start))
+        print("MultiSURFStar scoring elapsed time = " + str(tm.time() - start))
         sys.stdout.flush()
     return ScoreList
