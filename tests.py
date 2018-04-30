@@ -24,12 +24,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #Initialize hardcoded argument version of rebate.py
 
-
 import time as tm
 import sys
 import os
-import IO as io
-import Common as cmn
+from rebate import IO as io
+from rebate import Common as cmn
 ###############################################################################
 
 #Setup Options ################################################
@@ -129,7 +128,7 @@ if(V):
 
 
 def test_relieff():
-    import relieff as R
+    from rebate import relieff as R
     Scores = R.runReliefF(header,x,y,attr,var,distArray,options)
     print(Scores)
     assert Scores != None
