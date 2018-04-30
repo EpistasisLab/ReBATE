@@ -16,9 +16,7 @@ python -c "import sklearn; print('sklearn %s' % sklearn.__version__)"
 python -c "import pandas; print('pandas %s' % pandas.__version__)"
 
 if [[ "$COVERAGE" == "true" ]]; then
-    nosetests -v --with-coverage #This is what calls tests.py
-    #nosetests -s -v --with-coverage
+    nosetests -s -v --with-coverage
 else
-    nosetests -v #This is what calls tests.py
-    #nosetests -s -v
+    nosetests -s -v
 fi
