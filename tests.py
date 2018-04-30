@@ -1,7 +1,6 @@
 
 """
-scikit-rebate was primarily developed at the University of Pennsylvania by:
-    - Randal S. Olson (rso@randalolson.com)
+ReBATE was primarily developed at the University of Pennsylvania by:
     - Pete Schmitt (pschmitt@upenn.edu)
     - Ryan J. Urbanowicz (ryanurb@upenn.edu)
     - Weixuan Fu (weixuanf@upenn.edu)
@@ -23,8 +22,8 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
-from skrebate import ReliefF, SURF, SURFstar, MultiSURF, MultiSURFstar
-from skrebate.turf import TuRF
+from rebate import ReliefF, SURF, SURFstar, MultiSURF, MultiSURFstar
+from rebate.turf import TuRF
 from sklearn.pipeline import make_pipeline
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.preprocessing import Imputer

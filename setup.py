@@ -3,29 +3,29 @@
 from setuptools import setup, find_packages
 
 def calculate_version():
-    initpy = open('skrebate/_version.py').read().split('\n')
+    initpy = open('rebate/_version.py').read().split('\n')
     version = list(filter(lambda x: '__version__' in x, initpy))[0].split('\'')[1]
     return version
 
 package_version = calculate_version()
 
 setup(
-    name='skrebate',
+    name='rebate',
     version=package_version,
-    author='Randal S. Olson, Pete Schmitt, and Ryan J. Urbanowicz',
-    author_email='rso@randalolson.com, ryanurb@upenn.edu',
+    author='Pete Schmitt, and Ryan J. Urbanowicz',
+    author_email='ryanurb@upenn.edu',
     packages=find_packages(),
-    url='https://github.com/EpistasisLab/scikit-rebate',
+    url='https://github.com/EpistasisLab/ReBATE',
     license='License :: OSI Approved :: MIT License',
     description=('Relief-based feature selection algorithms'),
     long_description='''
-A sklearn-compatible Python implementation of ReBATE, a suite of Relief-based feature selection algorithms.
+A Cython optimized Python implementation of ReBATE, a suite of Relief-based feature selection algorithms.
 
 Contact
 =============
-If you have any questions or comments about skrebate, please feel free to contact us via e-mail: rso@randalolson.com and ryanurb@upenn.edu
+If you have any questions or comments about ReBATE, please feel free to contact us via e-mail: ryanurb@upenn.edu
 
-This project is hosted at https://github.com/EpistasisLab/scikit-rebate
+This project is hosted at https://github.com/EpistasisLab/ReBATE
 ''',
     zip_safe=True,
     install_requires=['numpy', 'scipy', 'scikit-learn'],
