@@ -7,7 +7,8 @@ env:
     - PYTHON_VERSION="2.7" LATEST="true"
     - PYTHON_VERSION="3.6" COVERAGE="true" LATEST="true"
     - PYTHON_VERSION="3.6" LATEST="true"
-install: source ./ci/.travis_install.sh
+
+install: source ./ci/.travis_install.sh 
 script: bash ./ci/.travis_test.sh
 after_success:
     # Ignore coveralls failures as the coveralls server is not very reliable
