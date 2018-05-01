@@ -23,13 +23,16 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 #Initialize hardcoded argument version of rebate.py
-
+import IO as io
+import Common as cmn
+import relieff as R
 import time as tm
 import sys
 import os
-from rebate import IO as io
-from rebate import Common as cmn
-from rebate import relieff as R
+
+#import warnings
+
+#warnings.filterwarnings('ignore')
 ###############################################################################
 
 #Setup Options ################################################
@@ -127,11 +130,11 @@ if(V):
                 + str(tm.time()-begin))
     sys.stdout.flush()
 
-
 def test_relieff():
     """ Ensure that relieff appears functional"""
     Scores = R.runReliefF(header,x,y,attr,var,distArray,options)
     print(Scores)
     assert Scores != None
+
 
 #
