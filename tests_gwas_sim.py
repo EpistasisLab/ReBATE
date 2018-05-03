@@ -26,19 +26,18 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import IO as io
 import Common as cmn
 import relieff as R
+import surf as S
+import multisurfstar as MS
 import time as tm
 import sys
 import os
 
-#import warnings
-
-#warnings.filterwarnings('ignore')
 ###############################################################################
 
 #Setup Options ################################################
 options = dict()
-options['filename'] = 'data/6Multiplexer_Data_500_0.txt'
-options['basename'] = '6Multiplexer_Data_500_0.txt'
+options['filename'] = 'data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt'
+options['basename'] = 'GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt'
 options['dir_path'] = 'data'
 options['testdata'] = None
 options['phenotypename'] = "Class"
@@ -53,6 +52,7 @@ options['topattr'] = 0
 options['outputdir'] = '.'
 #########################################
 
+#Below is just a copy of the required code from rebate.py#########################
 V = options['verbose']
 turfpct = int(options['turfpct'])
 algorithm = options['algorithm']
@@ -129,12 +129,75 @@ if(V):
     print(ctime + " " + disttype + " distance array time(sec) = " 
                 + str(tm.time()-begin))
     sys.stdout.flush()
+#############################################################################
 
-def test_relieff():
-    """ Ensure that relieff appears functional"""
+def test_relieff_GWAS_Sim():
+    """ Test ReliefF on GWAS_Sim """
     Scores = R.runReliefF(header,x,y,attr,var,distArray,options)
-    print(Scores)
+    print("ReliefF + GWAS_Sim ")
+    print(str(Scores))
+    #Check that score list is not empty
     assert Scores != None
+    #Check that a score for all features is output
+    assert len(Scores) == 20 #GWAS simulated dataset
+    #Check that the address bits (indexed as features 0 and 1) have the top scores as expected. 
+    indexTopScore = Scores.index(max(Scores))
+    assert  indexTopScore == 18 or indexTopScore == 19
+    Scores.pop(indexTopScore)
+    indexTopScore = Scores.index(max(Scores))
+    assert indexTopScore == 18
 
-
-#
+def test_surf_GWAS_Sim():
+    """ Test SURF on GWAS_Sim """
+    #New parameters
+    options['algorithm'] = 'surf'
+    Scores = S.runSURF(header, x, y, attr, var, distArray, options)
+    print("SURF + GWAS_Sim  ")
+    print(str(Scores))
+    #Check that score list is not empty
+    assert Scores != None
+    #Check that a score for all features is output
+    assert len(Scores) == 20 #GWAS simulated dataset
+    #Check that the address bits (indexed as features 0 and 1) have the top scores as expected. 
+    indexTopScore = Scores.index(max(Scores))
+    assert  indexTopScore == 18 or indexTopScore == 19
+    Scores.pop(indexTopScore)
+    indexTopScore = Scores.index(max(Scores))
+    assert indexTopScore == 18
+    
+def test_surfstar_GWAS_Sim():
+    """ Test SURF* on GWAS_Sim """
+    #New parameters
+    options['algorithm'] = 'surfstar'
+    Scores = S.runSURF(header, x, y, attr, var, distArray, options)
+    print("SURF* + GWAS_Sim  ")
+    print(str(Scores))
+    #Check that score list is not empty
+    assert Scores != None
+    #Check that a score for all features is output
+    assert len(Scores) == 20 #GWAS simulated dataset
+    #Check that the address bits (indexed as features 0 and 1) have the top scores as expected. 
+    indexTopScore = Scores.index(max(Scores))
+    assert  indexTopScore == 18 or indexTopScore == 19
+    Scores.pop(indexTopScore)
+    indexTopScore = Scores.index(max(Scores))
+    assert indexTopScore == 18
+    
+def test_multisurfstar_GWAS_Sim():
+    """ Test MultiSURF* on GWAS_Sim """
+    #New parameters
+    options['algorithm'] = 'multisurfstar'
+    Scores = MS.runMultiSURFStar(header, x, y, attr, var, distArray, options)
+    print("MultiSURF* + GWAS_Sim  ")
+    print(str(Scores))
+    #Check that score list is not empty
+    assert Scores != None
+    #Check that a score for all features is output
+    assert len(Scores) == 20 #GWAS simulated dataset
+    #Check that the address bits (indexed as features 0 and 1) have the top scores as expected. 
+    indexTopScore = Scores.index(max(Scores))
+    assert  indexTopScore ==18 or indexTopScore == 19
+    Scores.pop(indexTopScore)
+    indexTopScore = Scores.index(max(Scores))
+    assert indexTopScore == 18
+    
