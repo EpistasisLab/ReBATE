@@ -33,16 +33,14 @@ prog_start = tm.time()
 Scores = fullscores = table = lost = 0
 #-----------------------------------------------------------------------------#
 #
-# get arguments from command line
-#
+# Get arguments from command line ---------------------------------------------
 options = io.getArguments()
 V = options['verbose']
 turfpct = int(options['turfpct'])
 algorithm = options['algorithm']
-if(algorithm != 'relieff' and algorithm != 'surf' and algorithm != 'surfstar'
-                          and algorithm != 'multisurfstar'):
+if(algorithm != 'relieff' and algorithm != 'surf' and algorithm != 'surfstar' and algorithm != 'multisurfstar' and algorithm != 'multisurf'):
     print("algorithm " + algorithm + " is not available")
-    print("Use relieff, surf, surfstar or multisurfstar")
+    print("Use relieff, surf, surfstar, multisurfstar, or multisurf")
     sys.exit(1)
 
 if(V):
@@ -50,9 +48,7 @@ if(V):
     print(sys.version)
     print("--------------------------------------------")
 
-#-----------------------------------------------------------------------------#
-# read data into header and numpy matrix
-#
+# Read data into header and numpy matrix --------------------------------------
 input_file = options['filename']
 if(os.path.exists(input_file)):
     header, data = io.np_read_data(input_file,options)
@@ -65,6 +61,7 @@ else:
 x, y = io.getxy(header, data, options)
 #-----------------------------------------------------------------------------#
 # if there is test data, test it for compatibility
+# Test data is only imported to for constructing a new test dataset with the same selected feature subset.  Not used to test a model, and not trained on in feature scoring.
 if(options['testdata'] != None):
     testdata = options['testdata']
     if(os.path.exists(testdata)):
@@ -91,7 +88,7 @@ var  = cmn.getVariables(header, x, y, options)
 attr = cmn.getAttributeInfo(header, x, var, options)
 # 
 # create header list (cheader) with must headers that have continuous data
-#
+
 cheader = []
 for i in header:
     if attr[i][0] == 'continuous':
@@ -111,6 +108,7 @@ if(V):
     if(var['classType'] == 'multiclass'):
         yset = var['phenoTypeList']
         print("  classes:  " + str(len(yset)))
+    print("datatype:  " + var['dataType'])
     print("classname:  " + var['phenoTypeName'])
     print("algorithm:  " + options['algorithm'])
     print("--------------------------------------------")
@@ -145,17 +143,15 @@ if(turfpct > 0):  # Use TURF
     if(algorithm == 'relieff'):
         import relieff as R
         fun = R.runReliefF
-
-    if(algorithm == 'multisurfstar'):
-        if(var['classType'] == 'multiclass'):
-            import mcmss as MS
-        else:
-            import multisurfstar as MS
-        fun = MS.runMultiSURFstar
+        
     if(algorithm == 'surf' or algorithm == 'surfstar'):
         import surf as S
         fun = S.runSURF
-
+        
+    if(algorithm == 'multisurf' or algorithm == 'multisurfstar'):
+        import multisurf as MS
+        fun = MS.runMultiSURF
+        
     Scores,x,var,fullscores,lost,table = \
        T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options)
     options['algorithm'] = algorithm + "-turf"
@@ -164,16 +160,14 @@ elif(algorithm == 'relieff'):
     import relieff as R
     Scores = R.runReliefF(header,x,y,attr,var,distArray,options)
 
-elif(algorithm == 'multisurfstar'):
-    if(var['classType'] == 'multiclass'):
-        import mcmss as MS
-    else:
-        import multisurfstar as MS
-    Scores = MS.runMultiSURFStar(header, x, y, attr, var, distArray, options)
-
 elif(algorithm == 'surf' or algorithm =='surfstar'):
     import surf as S
     Scores = S.runSURF(header, x, y, attr, var, distArray, options)
+    
+elif(algorithm == 'multisurf' or algorithm == 'multisurfstar'):
+    if(var['classType'] == 'multiclass'):
+        import multisurf as MS
+    Scores = MS.runMultiSURF(header, x, y, attr, var, distArray, options)
 #-----------------------------------------------------------------------------#
 # create new data files of some number of top scored attributes
 ordered_attr = io.createScoresFile(header, var, Scores, options,

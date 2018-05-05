@@ -27,7 +27,7 @@ import IO as io
 import Common as cmn
 import relieff as R
 import surf as S
-import multisurfstar as MS
+import multisurf as MS
 import time as tm
 import sys
 import os
@@ -59,10 +59,9 @@ options['outputdir'] = '.'
 V = options['verbose']
 turfpct = int(options['turfpct'])
 algorithm = options['algorithm']
-if(algorithm != 'relieff' and algorithm != 'surf' and algorithm != 'surfstar'
-                          and algorithm != 'multisurfstar'):
+if(algorithm != 'relieff' and algorithm != 'surf' and algorithm != 'surfstar' and algorithm != 'multisurfstar' and algorithm != 'multisurf'):
     print("algorithm " + algorithm + " is not available")
-    print("Use relieff, surf, surfstar or multisurfstar")
+    print("Use relieff, surf, surfstar, multisurfstar, or multisurf")
     sys.exit(1)
 
 if(V):
@@ -145,6 +144,8 @@ def test_relieff_Multiplexer():
     assert Scores != None
     #Check that a score for all features is output
     assert len(Scores) == 6 #6-bit Multiplexer problem
+    #Check that all scores fall between -1 and 1
+    assert max(Scores) <= 1 and min(Scores) >= -1    
     #Check that the address bits (indexed as features 0 and 1) have the top scores as expected. 
     indexTopScore = Scores.index(max(Scores))
     assert  indexTopScore == 0 or indexTopScore == 1
@@ -163,13 +164,15 @@ def test_surf_Multiplexer():
     assert Scores != None
     #Check that a score for all features is output
     assert len(Scores) == 6 #6-bit Multiplexer problem
+    #Check that all scores fall between -1 and 1
+    assert max(Scores) <= 1 and min(Scores) >= -1 
     #Check that the address bits (indexed as features 0 and 1) have the top scores as expected. 
     indexTopScore = Scores.index(max(Scores))
     assert  indexTopScore == 0 or indexTopScore == 1
     Scores.pop(indexTopScore)
     indexTopScore = Scores.index(max(Scores))
     assert indexTopScore == 0
-    
+     
 def test_surfstar_Multiplexer():
     """ Test SURF* on 6-bit Multiplexer """
     #New parameters
@@ -181,6 +184,28 @@ def test_surfstar_Multiplexer():
     assert Scores != None
     #Check that a score for all features is output
     assert len(Scores) == 6 #6-bit Multiplexer problem
+    #Check that all scores fall between -1 and 1
+    assert max(Scores) <= 1 and min(Scores) >= -1 
+    #Check that the address bits (indexed as features 0 and 1) have the top scores as expected. 
+    indexTopScore = Scores.index(max(Scores))
+    assert  indexTopScore == 0 or indexTopScore == 1
+    Scores.pop(indexTopScore)
+    indexTopScore = Scores.index(max(Scores))
+    assert indexTopScore == 0
+     
+def test_multisurfstar_Multiplexer():
+    """ Test MultiSURF* on 6-bit Multiplexer """
+    #New parameters
+    options['algorithm'] = 'multisurfstar'
+    Scores = MS.runMultiSURF(header, x, y, attr, var, distArray, options)
+    print("MultiSURF* + 6-bit Multiplexer ")
+    print(str(Scores))
+    #Check that score list is not empty
+    assert Scores != None
+    #Check that a score for all features is output
+    assert len(Scores) == 6 #6-bit Multiplexer problem
+    #Check that all scores fall between -1 and 1
+    assert max(Scores) <= 1 and min(Scores) >= -1 
     #Check that the address bits (indexed as features 0 and 1) have the top scores as expected. 
     indexTopScore = Scores.index(max(Scores))
     assert  indexTopScore == 0 or indexTopScore == 1
@@ -188,22 +213,24 @@ def test_surfstar_Multiplexer():
     indexTopScore = Scores.index(max(Scores))
     assert indexTopScore == 0
     
-def test_multisurfstar_Multiplexer():
-    """ Test MultiSURF* on 6-bit Multiplexer """
+def test_multisurf_Multiplexer():
+    """ Test MultiSURF on 6-bit Multiplexer """
     #New parameters
-    options['algorithm'] = 'multisurfstar'
-    Scores = MS.runMultiSURFStar(header, x, y, attr, var, distArray, options)
-    print("MultiSURF* + 6-bit Multiplexer ")
+    options['algorithm'] = 'multisurf'
+    Scores = MS.runMultiSURF(header, x, y, attr, var, distArray, options)
+    print("MultiSURF + 6-bit Multiplexer ")
     print(str(Scores))
     #Check that score list is not empty
     assert Scores != None
     #Check that a score for all features is output
     assert len(Scores) == 6 #6-bit Multiplexer problem
+    #Check that all scores fall between -1 and 1
+    assert max(Scores) <= 1 and min(Scores) >= -1 
     #Check that the address bits (indexed as features 0 and 1) have the top scores as expected. 
     indexTopScore = Scores.index(max(Scores))
     assert  indexTopScore == 0 or indexTopScore == 1
     Scores.pop(indexTopScore)
     indexTopScore = Scores.index(max(Scores))
     assert indexTopScore == 0
-#
+
 ###################################################################################################################################################

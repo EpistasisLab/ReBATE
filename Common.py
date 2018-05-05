@@ -70,12 +70,13 @@ def getAttributeInfo(header, x, var, options):
         z = z[np.logical_not(np.isnan(z))]  # remove missing data before
         zulen = len(np.unique(z))           # calculating unique set
         if(zulen <= limit):
-            attr[h] = ('discrete', 0, 0, 0)
+            attr[h] = ('discrete', 0, 0, 0, 0)
             d += 1
         else:
             mx = np.max(z)
             mn = np.min(z)
-            attr[h] = ('continuous', mx, mn, mx - mn)
+            sd = np.std(z)
+            attr[h] = ('continuous', mx, mn, mx - mn, sd)
             c += 1
 
     overallDataType(attr,var,options)  # add datatype of data and endpoints
@@ -103,7 +104,7 @@ def overallDataType(attr, var, options):
         if(var['discretePhenotype'] and len(var['phenoTypeList']) > 2):
             pheno = 'multiclass'
         elif(var['discretePhenotype']):
-            pheno = 'discrete'
+            pheno = 'binary'
         else:
             pheno = 'continuous'
 
