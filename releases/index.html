@@ -64,17 +64,6 @@
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">Examples</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../examples/GAMETES_Example/">GAMETES Example</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <a class="" href="../contributing/">Contributing</a>
 	    </li>
           
@@ -140,16 +129,31 @@
                 <h1 id="rebate-02">ReBATE 0.2</h1>
 <ul>
 <li>
-<p>Added documentation.</p>
+<p>Added documentation with mkdocs.</p>
 </li>
 <li>
-<p>Added unit testing.</p>
+<p>Added unit testing. Adopted Travis CI</p>
 </li>
 <li>
-<p>Added MultiSURF.</p>
+<p>Added 'MultiSURF' algorithm, previously only available in scikit-rebate.</p>
 </li>
 <li>
 <p>Updated ReBATE to include other updates made to scikit-rebate. </p>
+</li>
+<li>
+<p>Fixed score normalizations so they fall between -1 and 1 for all algorithms Now matches scikit-rebate.</p>
+</li>
+<li>
+<p>Consolidated MultiSURF* so that one script is used for both multiclass, and other types of endpoints. </p>
+</li>
+<li>
+<p>Added an automatic (standard deviation based) ramp function method that is utilized by all algorithms on data with a mix of discrete and continuous features. Taken from scikit-rebate.</p>
+</li>
+<li>
+<p>Included steps to support operation of ReBATE in Windows. </p>
+</li>
+<li>
+<p>Beyond what was previously used for testing scikit-rebate, we added the 6-bit multiplexer as a test problem as well as a simple 3-class (multiclass) GWAS-style simulated dataset (with 100% heritability). </p>
 </li>
 </ul>
 <h1 id="rebate-01">ReBATE 0.1</h1>
