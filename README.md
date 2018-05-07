@@ -63,7 +63,7 @@ There are a number of possible ways to get the C compiler working on your Window
 
 2.) [Download/install Visual Studio Community 2017](https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017). This includes the necessary C compiler. It is not necessary to install all of the visual studio components, as this can be slow and take up a good deal of space. However make sure that you download and install the 'Desktop Development with C++' and the 'Python Development' workloads as detailed at the following [link](https://docs.microsoft.com/en-us/visualstudio/python/working-with-c-cpp-python-in-visual-studio).  Within the Python Development workload, also select the box on the right for Python native development tools. 
 
-3.) Once Visual Studio has been successfully installed, there was a remaining bug that required some troubleshooting for the C compiler to be found by the terminal. The following fix worked for us: 
+3.) Once Visual Studio has been successfully installed, there may be some further troubleshooting for the C compiler to be found by the terminal. Try compiling Cython as described below and if it doesn't work try something like the following fix that worked for us: 
 
 (A) [Add this to your PATH environment variables](https://www.java.com/en/download/help/path.xml): C:\Program Files (x86)\Windows Kits\10\bin\x64   
 
