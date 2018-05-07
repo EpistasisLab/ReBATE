@@ -35,10 +35,10 @@ def getArguments():
     options = dict()
 
     parser = argparse.ArgumentParser(description = \
-        "Run ReliefF/MultiSURF*/SURF/SURF* on your data")
+        "Run ReliefF/SURF/SURF*/MultiSURF*/MultiSURF on your data")
 
     parser.add_argument("-a", "--algorithm", type=str, \
-        help="relieff, multisurfstar, surf, surfstar (default=relieff)")
+        help="relieff, surf, surfstar, multisurfstar, multisurf (default=relieff)")
     parser.add_argument("-c", "--classname", type=str, \
         help="name of Class/Phenotype column (default=Class)")
     parser.add_argument("-D", "--debug", \

@@ -76,6 +76,11 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options):
         var = cmn.getVariables(header, x, y, options)
         attr = cmn.getAttributeInfo(header, x, var, options)
 
+        cheader = []
+        for i in header:
+            if attr[i][0] == 'continuous':
+                cheader.append(i)  
+                
         if(V):
             print("---------------  Parameters  ---------------")
             print("datatype:   " + var['dataType'])
@@ -96,7 +101,7 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options):
             distArray = md.getDistances(x[:,cidx], x[:,didx], var, diffs[cidx])
             disttype = "missing"
         else:
-            distArray = cmn.getDistances(x, attr, var, cidx, didx)
+            distArray = cmn.getDistances(x, attr, var, cidx, didx, cheader)
             disttype = "discrete/continuous/mixed"
 
         if(V):

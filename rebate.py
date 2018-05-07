@@ -142,31 +142,36 @@ if(turfpct > 0):  # Use TURF
 
     if(algorithm == 'relieff'):
         import relieff as R
+        print('Running Relieff + TuRF')
         fun = R.runReliefF
         
     if(algorithm == 'surf' or algorithm == 'surfstar'):
         import surf as S
+        print('Running SURF or SURF* + TuRF')
         fun = S.runSURF
         
     if(algorithm == 'multisurf' or algorithm == 'multisurfstar'):
         import multisurf as MS
+        print('Running MultiSURF or MultiSURF* + TuRF')
         fun = MS.runMultiSURF
         
-    Scores,x,var,fullscores,lost,table = \
-       T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options)
+    Scores,x,var,fullscores,lost,table = T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options)
     options['algorithm'] = algorithm + "-turf"
 
 elif(algorithm == 'relieff'):
     import relieff as R
+    print('Running Relieff')
     Scores = R.runReliefF(header,x,y,attr,var,distArray,options)
 
 elif(algorithm == 'surf' or algorithm =='surfstar'):
     import surf as S
+    print('Running SURF or SURF*')
     Scores = S.runSURF(header, x, y, attr, var, distArray, options)
     
 elif(algorithm == 'multisurf' or algorithm == 'multisurfstar'):
     if(var['classType'] == 'multiclass'):
         import multisurf as MS
+    print('Running MultiSURF or MultiSURF*')
     Scores = MS.runMultiSURF(header, x, y, attr, var, distArray, options)
 #-----------------------------------------------------------------------------#
 # create new data files of some number of top scored attributes

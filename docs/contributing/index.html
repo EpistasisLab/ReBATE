@@ -62,35 +62,26 @@
     <a class="" href="../using/">Using skrebate</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Examples</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../examples/GAMETES_Example/">GAMETES Example</a>
-                </li>
-    </ul>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
     <a class="current" href="./">Contributing</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#project-layout">Project layout</a></li>
+    <li class="toctree-l2"><a href="#contributing-to-rebate">Contributing to ReBATE</a></li>
     
-
-    <li class="toctree-l2"><a href="#how-to-contribute">How to contribute</a></li>
-    
-
-    <li class="toctree-l2"><a href="#before-submitting-your-pull-request">Before submitting your pull request</a></li>
-    
-
-    <li class="toctree-l2"><a href="#updating-the-documentation">Updating the documentation</a></li>
-    
-
-    <li class="toctree-l2"><a href="#after-submitting-your-pull-request">After submitting your pull request</a></li>
+        <ul>
+        
+            <li><a class="toctree-l3" href="#project-layout">Project layout</a></li>
+        
+            <li><a class="toctree-l3" href="#how-to-contribute">How to contribute</a></li>
+        
+            <li><a class="toctree-l3" href="#before-submitting-your-pull-request">Before submitting your pull request</a></li>
+        
+            <li><a class="toctree-l3" href="#updating-the-documentation">Updating the documentation</a></li>
+        
+            <li><a class="toctree-l3" href="#after-submitting-your-pull-request">After submitting your pull request</a></li>
+        
+        </ul>
     
 
     </ul>
@@ -146,7 +137,8 @@
           <div role="main">
             <div class="section">
               
-                <p>We welcome you to <a href="https://github.com/EpistasisLab/ReBATE/issues/">check the existing issues</a> for bugs or enhancements to work on. If you have an idea for an extension to ReBATE, please <a href="https://github.com/EpistasisLab/ReBATE/issues//new">file a new issue</a> so we can discuss it.</p>
+                <h1 id="contributing-to-rebate">Contributing to ReBATE</h1>
+<p>We welcome you to <a href="https://github.com/EpistasisLab/ReBATE/issues/">check the existing issues</a> for bugs or enhancements to work on. If you have an idea for an extension to ReBATE, please <a href="https://github.com/EpistasisLab/ReBATE/issues//new">file a new issue</a> so we can discuss it.</p>
 <h2 id="project-layout">Project layout</h2>
 <p>The latest stable release of ReBATE is on the <a href="https://github.com/EpistasisLab/ReBATE/tree/master">master branch</a>, whereas the latest version of scikit-rebate in development is on the <a href="https://github.com/EpistasisLab/ReBATE/tree/development">development branch</a>. Make sure you are looking at and working on the correct branch if you're looking to contribute code.</p>
 <p>In terms of directory structure:</p>
@@ -187,7 +179,7 @@ GitHub:</p>
 <p>Start making changes on your newly created branch, remembering to never work on the <code>master</code> branch! Work on this copy on your computer using Git to do the version control.</p>
 </li>
 <li>
-<p>Once some changes are saved locally, you can use your tweaked version of ReBATE by navigating to the project's base directory and running ReBATE in a script. You can use an example script in our <a href="../examples/GAMETES_Example/">examples directory</a> to begin your testing.</p>
+<p>Once some changes are saved locally, you can use your tweaked version of ReBATE by navigating to the project's base directory and running ReBATE in a script. </p>
 </li>
 <li>
 <p>To check your changes haven't broken any existing tests and to check new tests you've added pass run the following (note, you must have the <code>nose</code> package installed within your dev environment for this to work):</p>
@@ -205,8 +197,7 @@ GitHub:</p>
 <pre><code>      $ git push -u origin my-contribution
 </code></pre>
 <p>Finally, go to the web page of your fork of the ReBATE repo, and click 'Pull Request' (PR) to send your changes to the maintainers for review. Make sure that you send your PR to the <code>development</code> branch, as the <code>master</code> branch is reserved for the latest stable release. This will start the CI server to check all the project's unit tests run and send an email to the maintainers.</p>
-<p>(If any of the above seems like magic to you, then look up the 
-<a href="http://git-scm.com/documentation">Git documentation</a> on the web.)</p>
+<p>(For details on the above look up the <a href="http://git-scm.com/documentation">Git documentation</a> on the web.)</p>
 <h2 id="before-submitting-your-pull-request">Before submitting your pull request</h2>
 <p>Before you submit a pull request for your contribution, please work through this checklist to make sure that you have done everything necessary so we can efficiently review and accept your changes.</p>
 <p>If your contribution changes ReBATE in any way:</p>
@@ -243,8 +234,11 @@ GitHub:</p>
 </li>
 </ul>
 <h2 id="updating-the-documentation">Updating the documentation</h2>
-<p>We use <a href="http://www.mkdocs.org/">mkdocs</a> to manage our <a href="http://EpistasisLab.github.io/ReBATE/">documentation</a>. This allows us to write the docs in Markdown and compile them to HTML as needed. Below are a few useful commands to know when updating the documentation. Make sure that you are running them in the base repository directory.</p>
+<p>We use <a href="http://www.mkdocs.org/">mkdocs</a> to manage our <a href="http://EpistasisLab.github.io/ReBATE/">documentation</a>. This allows us to write the docs in Markdown and compile them to HTML as needed. Below are a few useful commands to know when updating the documentation. Make sure that you are running them in the base repository directory.  </p>
 <ul>
+<li>
+<p><code>pip install mkdocs</code>: Install mkdocs, if you don't already have it. (can be run from anywhere)</p>
+</li>
 <li>
 <p><code>mkdocs serve</code>: Hosts of a local version of the documentation that you can access at the provided URL. The local version will update automatically as you save changes to the documentation.</p>
 </li>
@@ -268,7 +262,7 @@ GitHub:</p>
         <a href="../releases/" class="btn btn-neutral float-right" title="Release Notes">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../examples/GAMETES_Example/" class="btn btn-neutral" title="GAMETES Example"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../using/" class="btn btn-neutral" title="Using skrebate"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -298,7 +292,7 @@ GitHub:</p>
           <a href="https://github.com/EpistasisLab/ReBATE/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../examples/GAMETES_Example/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../using/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../releases/" style="color: #fcfcfc">Next &raquo;</a></span>

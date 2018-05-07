@@ -1,3 +1,4 @@
+#Contributing to ReBATE
 We welcome you to [check the existing issues](https://github.com/EpistasisLab/ReBATE/issues/) for bugs or enhancements to work on. If you have an idea for an extension to ReBATE, please [file a new issue](https://github.com/EpistasisLab/ReBATE/issues//new) so we can discuss it.
 
 ## Project layout
@@ -38,7 +39,7 @@ GitHub:
 
 5. Start making changes on your newly created branch, remembering to never work on the ``master`` branch! Work on this copy on your computer using Git to do the version control.
 
-6. Once some changes are saved locally, you can use your tweaked version of ReBATE by navigating to the project's base directory and running ReBATE in a script. You can use an example script in our [examples directory](examples/GAMETES_Example.md) to begin your testing.
+6. Once some changes are saved locally, you can use your tweaked version of ReBATE by navigating to the project's base directory and running ReBATE in a script. 
 
 7. To check your changes haven't broken any existing tests and to check new tests you've added pass run the following (note, you must have the `nose` package installed within your dev environment for this to work):
 
@@ -55,8 +56,7 @@ GitHub:
 
 Finally, go to the web page of your fork of the ReBATE repo, and click 'Pull Request' (PR) to send your changes to the maintainers for review. Make sure that you send your PR to the `development` branch, as the `master` branch is reserved for the latest stable release. This will start the CI server to check all the project's unit tests run and send an email to the maintainers.
 
-(If any of the above seems like magic to you, then look up the 
-[Git documentation](http://git-scm.com/documentation) on the web.)
+(For details on the above look up the [Git documentation](http://git-scm.com/documentation) on the web.)
 
 ## Before submitting your pull request
 
@@ -86,13 +86,16 @@ If your contribution requires a new library dependency:
 
 ## Updating the documentation
 
-We use [mkdocs](http://www.mkdocs.org/) to manage our [documentation](http://EpistasisLab.github.io/ReBATE/). This allows us to write the docs in Markdown and compile them to HTML as needed. Below are a few useful commands to know when updating the documentation. Make sure that you are running them in the base repository directory.
+We use [mkdocs](http://www.mkdocs.org/) to manage our [documentation](http://EpistasisLab.github.io/ReBATE/). This allows us to write the docs in Markdown and compile them to HTML as needed. Below are a few useful commands to know when updating the documentation. Make sure that you are running them in the base repository directory.  
+
+* `pip install mkdocs`: Install mkdocs, if you don't already have it. (can be run from anywhere)
 
 * `mkdocs serve`: Hosts of a local version of the documentation that you can access at the provided URL. The local version will update automatically as you save changes to the documentation.
 
 * `mkdocs build --clean`: Creates a fresh build of the documentation in HTML. Always run this before deploying the documentation to GitHub.
 
 * `mkdocs gh-deploy`: Deploys the documentation to GitHub. If you're deploying on your fork of ReBATE, the online documentation should be accessible at `http://<YOUR GITHUB USERNAME>.github.io/ReBATE/`. Generally, you shouldn't need to run this command because you can view your changes with `mkdocs serve`.
+
 
 ## After submitting your pull request
 
