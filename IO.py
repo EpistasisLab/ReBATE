@@ -316,7 +316,48 @@ def np_read_data(fname, options):
     header = line.split(delim)
 
     return header, data
+###############################################################################
+def np_read_data_tst(fname, options):
+    """Read in data file into a numpy array (data) and a header
+       returns header, data in that order. Only used for unit testing! Uses a smaller subset of full dataset"""
 
+    import csv
+    np.random.seed(5249083)
+
+    start = tm.time()
+    V = options['verbose']
+    md = options['missingdata']
+
+    #---- determine delimiter  -----------#
+    fh = open(fname)
+    line = fh.readline().rstrip()
+    fh.close()
+    sniffer = csv.Sniffer()
+    dialect = sniffer.sniff(line)
+    delim = dialect.delimiter
+    #-------------------------------------#
+
+    # reading into numpy array
+    data_raw = np.genfromtxt(fname, missing_values=md, skip_header=1,
+                         dtype=np.double, delimiter=delim)
+    data_raw = pd.DataFrame(data=data_raw)
+    data_raw = data_raw.sample(frac=0.25)
+    print(len(data_raw))
+    data_raw = data_raw.as_matrix()
+    #sampleSize = int(0.25 * len(data))
+    #data = np.random.choice(data,sampleSize)
+    #print(sampleSize)
+
+    if(V):
+        ctime = "[" + tm.strftime("%H:%M:%S") + "]"
+        print(ctime + " " + fname + ": data input elapsed time(sec) = " 
+                    + str(tm.time() - start))
+        sys.stdout.flush()
+
+    #delim = '"' + delim + '"'
+    header = line.split(delim)
+
+    return header, data_raw
 ###############################################################################
 def getxy(header, data, options):
     """ returns contiguous x numpy matrix of data and y numpy array of class

@@ -69,7 +69,7 @@ if(V):
 #-----------------------------------------------------------------------------#
 input_file = options['filename']
 if(os.path.exists(input_file)):
-    header, data = io.np_read_data(input_file,options)
+    header, data = io.np_read_data_tst(input_file,options)
 else:
     print("File " + input_file + " does NOT exist!")
     sys.exit(1)
