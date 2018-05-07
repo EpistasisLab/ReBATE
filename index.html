@@ -121,7 +121,7 @@
             <div class="section">
               
                 <p><a href="https://github.com/EpistasisLab/ReBATE">ReBATE</a> includes stand-alone Python code to run any of the included/available <a href="https://en.wikipedia.org/wiki/Relief_(feature_selection)">Relief-Based algorithms (RBAs)</a> 
-designed for feature weighting/selection as part of a machine learning pipeline (supervised learning). Presently this includes the following core RBAs: ReliefF, SURF, SURF<em>, and MultiSURF</em>. Additionally, an implementation of the iterative TuRF mechanism is included. As of 5/7/18, <strong>it is still under active development</strong> and we encourage you to check back on this repository regularly for updates.</p>
+designed for feature weighting/selection as part of a machine learning pipeline (supervised learning). Presently this includes the following core RBAs: ReliefF, SURF, SURF*, and MultiSURF*. Additionally, an implementation of the iterative TuRF mechanism is included. As of 5/7/18, <strong>it is still under active development</strong> and we encourage you to check back on this repository regularly for updates.</p>
 <p>These algorithms offer a computationally efficient way to perform feature selection that is sensitive to feature interactions as well as simple univariate associations, unlike most currently available filter-based feature selection methods. The main benefit of Relief algorithms is that they identify feature interactions without having to exhaustively check every pairwise interaction, thus taking significantly less time than exhaustive pairwise search.</p>
 <p>Each core algorithm outputs an ordered set of feature names along with respective feature scores (i.e. weights). Certain algorithms require user specified run parameters (e.g. ReliefF requires the user to specify some 'k' number of nearest neighbors). </p>
 <p>Relief algorithms are commonly applied to genetic analyses, where epistasis (i.e., feature interactions) is common. However, the algorithms implemented in this package can be applied to almost any supervised classification data set and supports:</p>
@@ -199,5 +199,5 @@ This code is most appropriate for more experienced users or those primarily inte
 
 <!--
 MkDocs version : 0.17.3
-Build Date UTC : 2018-05-07 21:39:56
+Build Date UTC : 2018-05-07 21:46:50
 -->
