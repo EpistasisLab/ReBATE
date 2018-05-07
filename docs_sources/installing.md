@@ -17,8 +17,10 @@ Here we discuss the additional prerequisites for running ReBATE on a Windows ope
 
 There are a number of possible ways to get the C compiler working on your Windows terminal, all of which will depend on the version of windows, the version of python/Anaconda, and whether it is 32-bit or 64-bit. Be aware that there may be some troubleshooting in getting the C compiler operational in your command line terminal. Below we outline steps that worked for us in the spring of 2018 using Windows 10, and Python 3.5.2 with Anaconda 4.0 (64-bit), using GitBash as our terminal.
 
-1.) Ensure that setuptools is updated. Run the following in your terminal: pip install -upgrade setuptools
-
+1.) Ensure that setuptools is updated. Run the following in your terminal: 
+```
+pip install -upgrade setuptools
+```
 2.) [Download/install Visual Studio Community 2017](https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017). This includes the necessary C compiler. It is not necessary to install all of the visual studio components, as this can be slow and take up a good deal of space. However make sure that you download and install the 'Desktop Development with C++' and the 'Python Development' workloads as detailed at the following [link](https://docs.microsoft.com/en-us/visualstudio/python/working-with-c-cpp-python-in-visual-studio).  Within the Python Development workload, also select the box on the right for Python native development tools. 
 
 3.) Once Visual Studio has been successfully installed, there was a remaining bug that required some troubleshooting for the C compiler to be found by the terminal. Try compiling Cython as described below and if it doesn't work try something like the following fix that worked for us: 
@@ -32,6 +34,11 @@ There are a number of possible ways to get the C compiler working on your Window
 ## Compile Cython
 Once these prerequisites are installed, it will be necessary to compile the Cython code on the respective operating system within which ReBATE will be run. It is only necessary to do this once, not every time ReBATE is run. This happens in two stages (1) a .pyx file is compiled by cython to a .c file, then (2) the .c file is compiled by a C compiler to a .so file (or a .pyd file for Windows). 
 
-Simply run the following file included with ReBATE to produce the .c and (.so or .pyd) files:  ./make.sh
-
-If there is need to recompile the Cython files, first remove the previous .c and (.so or .pyd) files by running: ./clean.sh
+Simply run the following file included with ReBATE to produce the .c and (.so or .pyd) files:  
+```
+./make.sh
+```
+If there is need to recompile the Cython files, first remove the previous .c and (.so or .pyd) files by running: 
+./clean.sh
+```
+```
