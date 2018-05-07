@@ -142,7 +142,7 @@
 <p>Below we review the run parameters that can be specified (depending on the Relief-algorithm). </p>
 <table>
 <tr>
-<th>Parameter</th>
+<th width="30%">Parameter</th>
 <th width="15%">Valid values</th>
 <th>Effect</th>
 </tr>
@@ -220,13 +220,13 @@
 
 <p>Output file naming and reasons for not using certain run parameters are the same as in the 'Relief' example with the addition of '-k' no longer needing to be specified. </p>
 <h3 id="surf_1">SURF*</h3>
-<p>SURF<em> expanded on SURF, adding the concept of 'far' scoring and was demonstrated to improve performance over SURF to detect pure 2-way feature interactions, however it performs poorly in detecting simple linear associations. Example code for how to run SURF</em> is as follows:</p>
+<p>SURF* expanded on SURF, adding the concept of 'far' scoring and was demonstrated to improve performance over SURF to detect pure 2-way feature interactions, however it performs poorly in detecting simple linear associations. Example code for how to run SURF* is as follows:</p>
 <pre><code class="python">./rebate.py -a surfstar -f data/6Multiplexer_Data_500_0.txt
 </code></pre>
 
 <p>Output file naming and reasons for not using certain run parameters are the same as in the 'Relief' example with the addition of '-k' no longer needing to be specified. </p>
 <h3 id="multisurf">MultiSURF*</h3>
-<p>MultiSURF<em> expanded on SURF</em>, adding the deadband scoring zone, and target instance specific determinations of the nearest and farthest neighborhoods during scoring.  MultiSURF<em> was demonstrated to yield optimal performance to detect pure 2-way feature interactions, however it performs poorly in detecting simple linear associations. Example code for how to run MultiSURF</em> is as follows:</p>
+<p>MultiSURF* expanded on SURF*, adding the deadband scoring zone, and target instance specific determinations of the nearest and farthest neighborhoods during scoring.  MultiSURF* was demonstrated to yield optimal performance to detect pure 2-way feature interactions, however it performs poorly in detecting simple linear associations. Example code for how to run MultiSURF* is as follows:</p>
 <pre><code class="python">./rebate.py -a multisurfstar -f data/6Multiplexer_Data_500_0.txt
 </code></pre>
 
@@ -238,7 +238,7 @@
 
 <p>Output file naming and reasons for not using certain run parameters are the same as in the 'Relief' example with the addition of '-k' no longer needing to be specified. </p>
 <h3 id="turf-with-any-other-core-algorithm">TuRF with any other 'Core' algorithm</h3>
-<p>TuRF is a wrapper method that can be combined with any of the core Relief-based methods (i.e. Relief, Relieff, SURF, SURF<em>, MultiSURF</em>, and MultiSURF). TuRF iteratively runs a given Relief-based algorithm, each time removing the lowest scoring percentage of features, and the re-scoring using the remaining features. Using an iterative Relief approach like TuRF is particularly important in very large feature spaces (e.g. any feature space larger than 10,000 features). It is expected that TuRF will improve the quality of feature scores even in smaller feature spaces, assuming that relevant features are not removed in a given TuRF iteration. In the examples below, a TuRF percent of 50 was used. This means that after the first iteration, 50% of the features will be removed from scoring.  This also means two iterations will be completed (i.e 1/(50/100)). Had we specified 25%, then TuRF would run for 4 iterations (i.e. 1/(25/100)).  Example code for how to run TuRF with the different core algorithms is as follows:</p>
+<p>TuRF is a wrapper method that can be combined with any of the core Relief-based methods (i.e. Relief, Relieff, SURF, SURF*, MultiSURF*, and MultiSURF). TuRF iteratively runs a given Relief-based algorithm, each time removing the lowest scoring percentage of features, and the re-scoring using the remaining features. Using an iterative Relief approach like TuRF is particularly important in very large feature spaces (e.g. any feature space larger than 10,000 features). It is expected that TuRF will improve the quality of feature scores even in smaller feature spaces, assuming that relevant features are not removed in a given TuRF iteration. In the examples below, a TuRF percent of 50 was used. This means that after the first iteration, 50% of the features will be removed from scoring.  This also means two iterations will be completed (i.e 1/(50/100)). Had we specified 25%, then TuRF would run for 4 iterations (i.e. 1/(25/100)).  Example code for how to run TuRF with the different core algorithms is as follows:</p>
 <pre><code class="python">./rebate.py -a relieff -f data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -k 100 -t 50
 ./rebate.py -a surf -f data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -t 50
 ./rebate.py -a surfstar -f data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -t 50
