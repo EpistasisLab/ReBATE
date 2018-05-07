@@ -316,6 +316,7 @@ def np_read_data(fname, options):
     header = line.split(delim)
 
     return header, data
+
 ###############################################################################
 def getxy(header, data, options):
     """ returns contiguous x numpy matrix of data and y numpy array of class

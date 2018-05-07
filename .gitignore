@@ -11,3 +11,9 @@
 /surf.cp35-win_amd64.pyd
 /MultiSURF.c
 /multisurf.cp35-win_amd64.pyd
+/mcMultiSURFStar.pyx
+/setup_MultiSURFStar.py
+/setup_mcMultiSURFStar.py
+/multisurf.cp36-win_amd64.pyd
+/relieff.cp36-win_amd64.pyd
+/surf.cp36-win_amd64.pyd
