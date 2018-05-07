@@ -39,6 +39,6 @@ Simply run the following file included with ReBATE to produce the .c and (.so or
 ./make.sh
 ```
 If there is need to recompile the Cython files, first remove the previous .c and (.so or .pyd) files by running: 
-./clean.sh
 ```
+./clean.sh
 ```

@@ -14,7 +14,7 @@ Below we review the run parameters that can be specified (depending on the Relie
 
 <table>
 <tr>
-<th width="30%">Parameter</th>
+<th width="25%">Parameter</th>
 <th width="15%">Valid values</th>
 <th>Effect</th>
 </tr>
