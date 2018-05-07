@@ -56,7 +56,7 @@ If you wish to contribute to ReBATE we strongly recommend following the steps de
 
 ## Citing ReBATE
 
-If you use ReBATE in a scientific publication, please consider citing the following paper:
+If you use ReBATE or the MultiSURF algorithm in a scientific publication, please consider citing the following paper:
 
 Ryan J. Urbanowicz, Randal S. Olson, Peter Schmitt, Melissa Meeker, Jason H. Moore (2017). [Benchmarking Relief-Based Feature Selection Methods](https://arxiv.org/abs/1711.08477). *arXiv preprint*, under review.
 
@@ -70,6 +70,8 @@ BibTeX entry:
     howpublished = {arXiv e-print. https://arxiv.org/abs/1711.08477},
 }
 ```
+If you wish to directly cite the original paper for one of the other algorithms implemented in ReBATE please refer to our [citing documentation](https://epistasislab.github.io/ReBATE/citing/).
+
 
 ## History
 This code is largely based on Python implementations of ReliefF, SURF, SURF*, MultiSURF*, and TuRF within the [ExSTraCS](https://github.com/ryanurbs/ExSTraCS_2.0) algorithm software. 
