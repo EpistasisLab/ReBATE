@@ -227,3 +227,37 @@ def test_multisurf_GWAS_Sim():
     Scores.pop(indexTopScore)
     indexTopScore = Scores.index(max(Scores))
     assert indexTopScore == 18
+    
+def test_multisurf_turf_GWAS_Sim():
+    """ Test MultiSURF with TuRF on GWAS_Sim """
+    #New parameters
+    import Turf as T
+    options['algorithm'] = 'multisurf'
+    options['turfpct'] = '50'
+    turfpct = int(options['turfpct'])
+    pct = float(turfpct)/100.0
+    iterations = int(1/float(pct))
+    fun = MS.runMultiSURF
+    tempx = None
+    tempVar = None
+    tempfullscores = None
+    templost = None
+    temptable = None
+    Scores,tempx,tempVar,tempfullscores,templost,temptable = T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options)
+    options['algorithm'] = algorithm + "-turf"
+
+    print("MultiSURF with TuRF + 6-bit Multiplexer ")
+    print(str(Scores))
+    #Check that score list is not empty
+    assert Scores != None
+    #Check that a score for all features is output
+    assert len(Scores) == 10 #6-bit Multiplexer problem
+    #Check that all scores fall between -1 and 1
+    assert max(Scores) <= 1 and min(Scores) >= -1 
+    #Check that the address bits (indexed as features 0 and 1) have the top scores as expected. 
+    indexTopScore = Scores.index(max(Scores))
+    assert  indexTopScore == 8 or indexTopScore == 9
+    Scores.pop(indexTopScore)
+    indexTopScore = Scores.index(max(Scores))
+    assert indexTopScore == 8
+#################################
