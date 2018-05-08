@@ -18,3 +18,5 @@ __pycache__/
 /multisurf.cp36-win_amd64.pyd
 /relieff.cp36-win_amd64.pyd
 /surf.cp36-win_amd64.pyd
+*.so
+*.c
