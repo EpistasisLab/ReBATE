@@ -342,7 +342,7 @@ def np_read_data_tst(fname, options):
                          dtype=np.double, delimiter=delim)
     data_raw = pd.DataFrame(data=data_raw)
     data_raw = data_raw.sample(frac=0.25)
-    print(len(data_raw))
+    #print(len(data_raw))
     data_raw = data_raw.as_matrix()
     #sampleSize = int(0.25 * len(data))
     #data = np.random.choice(data,sampleSize)

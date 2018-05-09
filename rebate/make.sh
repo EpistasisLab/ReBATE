@@ -15,8 +15,8 @@
 #===============================================================================
 
 echo "*** building MultiSURF "
-python ReBATE/setup_multisurf.py build_ext -i
+python setup_multisurf.py build_ext -i
 echo "*** building ReliefF "
-python ReBATE/setup_relieff.py build_ext -i
+python setup_relieff.py build_ext -i
 echo "*** building SURF "
-python ReBATE/setup_surf.py build_ext -i
+python setup_surf.py build_ext -i

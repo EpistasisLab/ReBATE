@@ -45,7 +45,10 @@ any time an updated version of ReBATE is downloaded to your system.  Compiling t
 For detailed information on installing ReBATE, including necessary prerequisites, special instructions for Windows users, and instructions for compiling cython, please refer to our [installation documentation](https://EpistasisLab.github.io/ReBATE/installing/). 
 
 ## Running ReBATE
-Run rebate.py -h for all the available options. 
+From the '/rebate/' directory, run the following to view all available options: 
+```
+rebate.py -h
+```
 
 For detailed information and examples of how to run the different Relief algorithms available in this package, please refer to our [usage documentation](https://EpistasisLab.github.io/ReBATE/using/).
 

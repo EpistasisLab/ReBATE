@@ -1,5 +1,5 @@
 #Using ReBATE
-This section presumes that all ReBATE prerequisites have been properly [installed](https://epistasislab.github.io/ReBATE/installing/).  
+This section presumes that all ReBATE prerequisites have been properly [installed](https://epistasislab.github.io/ReBATE/installing/). Also ensure that all commands below are run from the '/rebate/' directory. 
 
 To access the ReBATE help output (with all available run parameters and their default values), use the following command:
 
@@ -78,7 +78,7 @@ For all of the examples below, assume that the commands are being run from the r
 Relief is the first, and most basic of the Relief-based feature selection algorithms. While ReBATE does not specifically implement the original Relief algorithm (i.e. notice that 'relief' is not an option for algorithm in the help output), an algorithm equivalent to Relief can be run by simply running 'relieff' and setting the parameter for 'number of nearest neighbors' to 1.  Example code for how to run Relief is as follows:
 
 ```python
-./rebate.py -a relieff -f data/6Multiplexer_Data_500_0.txt -k 1
+./rebate.py -a relieff -f ../data/6Multiplexer_Data_500_0.txt -k 1
 ```
 
 The .txt output file should now be in the folder named '/data/'. Note that the name of the outputfile includes (1) the name of the relief-based algorithm used, (2) the --discretelimit used, (3) the -k used, and (4) the name of the training dataset. 
@@ -89,7 +89,7 @@ Also note that the following arguments were not specified for the given reasons:
 Relieff is currently the best known and most widely used Relief-based feature selection algorithm. Relieff requires you to specify the number of nearest neighbors that the algorithm will use for its feature scoring. Historically a default value of 10 has been used for k, however in datasets with 200 samples or more, [evidence](https://arxiv.org/abs/1711.08477) suggests that a k of 100 might be better by default. However for datasets with higher order feature interactions a smaller k is expected to perform better One thing is for clear, depending on the dataset, properly choosing k is important to optimal scoring. Since the given Multiplexer problem involves a 3-way feature interaction, we will use a smaller k here. Example code for how to run Relieff is as follows:
 
 ```python
-./rebate.py -a relieff -f data/6Multiplexer_Data_500_0.txt -k 10
+./rebate.py -a relieff -f ../data/6Multiplexer_Data_500_0.txt -k 10
 ```
 
 Output file naming and reasons for not using certain run parameters are the same as in the 'Relief' example. 
@@ -98,7 +98,7 @@ Output file naming and reasons for not using certain run parameters are the same
 SURF removed the need to specify the k parameter and was demonstrated to improve performance over Relieff to detect pure 2-way feature interactions. Example code for how to run SURF is as follows:
 
 ```python
-./rebate.py -a surf -f data/6Multiplexer_Data_500_0.txt
+./rebate.py -a surf -f ../data/6Multiplexer_Data_500_0.txt
 ```
 
 Output file naming and reasons for not using certain run parameters are the same as in the 'Relief' example with the addition of '-k' no longer needing to be specified. 
@@ -107,7 +107,7 @@ Output file naming and reasons for not using certain run parameters are the same
 SURF\* expanded on SURF, adding the concept of 'far' scoring and was demonstrated to improve performance over SURF to detect pure 2-way feature interactions, however it performs poorly in detecting simple linear associations. Example code for how to run SURF\* is as follows:
 
 ```python
-./rebate.py -a surfstar -f data/6Multiplexer_Data_500_0.txt
+./rebate.py -a surfstar -f ../data/6Multiplexer_Data_500_0.txt
 ```
 
 Output file naming and reasons for not using certain run parameters are the same as in the 'Relief' example with the addition of '-k' no longer needing to be specified. 
@@ -116,7 +116,7 @@ Output file naming and reasons for not using certain run parameters are the same
 MultiSURF\* expanded on SURF\*, adding the deadband scoring zone, and target instance specific determinations of the nearest and farthest neighborhoods during scoring.  MultiSURF\* was demonstrated to yield optimal performance to detect pure 2-way feature interactions, however it performs poorly in detecting simple linear associations. Example code for how to run MultiSURF\* is as follows:
 
 ```python
-./rebate.py -a multisurfstar -f data/6Multiplexer_Data_500_0.txt
+./rebate.py -a multisurfstar -f ../data/6Multiplexer_Data_500_0.txt
 ```
 
 Output file naming and reasons for not using certain run parameters are the same as in the 'Relief' example with the addition of '-k' no longer needing to be specified. 
@@ -125,7 +125,7 @@ Output file naming and reasons for not using certain run parameters are the same
 MultiSURF is the newest of the Relief-based algorithms in ReBATE. It preserved the best aspects of MultiSURF\*, but removed the far scoring thus restoring performance on detecting simple linear associations.  MultiSURF is currently recommended as the and most well rounded Relief-based algorithm available in ReBATE. Example code for how to run MultiSURF is as follows:
 
 ```python
-./rebate.py -a multisurf -f data/6Multiplexer_Data_500_0.txt
+./rebate.py -a multisurf -f ../data/6Multiplexer_Data_500_0.txt
 ```
 
 Output file naming and reasons for not using certain run parameters are the same as in the 'Relief' example with the addition of '-k' no longer needing to be specified. 
@@ -134,11 +134,11 @@ Output file naming and reasons for not using certain run parameters are the same
 TuRF is a wrapper method that can be combined with any of the core Relief-based methods (i.e. Relief, Relieff, SURF, SURF\*, MultiSURF\*, and MultiSURF). TuRF iteratively runs a given Relief-based algorithm, each time removing the lowest scoring percentage of features, and the re-scoring using the remaining features. Using an iterative Relief approach like TuRF is particularly important in very large feature spaces (e.g. any feature space larger than 10,000 features). It is expected that TuRF will improve the quality of feature scores even in smaller feature spaces, assuming that relevant features are not removed in a given TuRF iteration. In the examples below, a TuRF percent of 50 was used. This means that after the first iteration, 50% of the features will be removed from scoring.  This also means two iterations will be completed (i.e 1/(50/100)). Had we specified 25%, then TuRF would run for 4 iterations (i.e. 1/(25/100)).  Example code for how to run TuRF with the different core algorithms is as follows:
 
 ```python
-./rebate.py -a relieff -f data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -k 100 -t 50
-./rebate.py -a surf -f data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -t 50
-./rebate.py -a surfstar -f data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -t 50
-./rebate.py -a multisurfstar -f data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -t 50
-./rebate.py -a multisurf -f data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -t 50
+./rebate.py -a relieff -f ../data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -k 100 -t 50
+./rebate.py -a surf -f ../data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -t 50
+./rebate.py -a surfstar -f ../data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -t 50
+./rebate.py -a multisurfstar -f ../data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -t 50
+./rebate.py -a multisurf -f ../data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -t 50
 ```
 
 Note that in the associated score file that all original features are included, but only those that made the final TuRF cut are numbered in the far right column.  Those that were eliminated during a given iteration are indicated by a '*'.  Further, you can identify which features were more recently removed based on their associated feature score. Notably these scores are not accurate Relief scores (since they are automatically generated for a filtered-out features), but instead only provided to indicate when those features were filtered out.  All filtered out features are guarenteed to have a score lowerer than the lowest scoring feature in the final TuRF run.  Filtered out features with lower values were filtered out in earlier TuRF iterations (i.e. the features with the lowest scores were filtered out in the first iteration).  
@@ -150,25 +150,31 @@ We conclude with some additional examples for running ReBATE in some other speci
 
 #### Specify a different class label:
 ```python
-./rebate.py -a multisurf -f data/6Multiplexer_Data_500_0.txt -c Class
+./rebate.py -a multisurf -f ../data/6Multiplexer_Data_500_0.txt -c Class
 ```
 Note that 'Class' is also the default, but can be substituted with the appropriate label used in your dataset (e.g. 'Status', 'Outcome', etc.)
 
 #### Specify a different missing value identifier:
 ```python
-./rebate.py -a multisurf -f data/GAMETES_Epistasis_2-Way_missing_values_0.1_a_20s_1600her_0.4__maf_0.2_EDM-2_01.txt -m NA
+./rebate.py -a multisurf -f ../data/GAMETES_Epistasis_2-Way_missing_values_0.1_a_20s_1600her_0.4__maf_0.2_EDM-2_01.txt -m NA
 ```
 Note that 'NA' is also the default, but can be substituted with an appropriate text value (e.g. 'N/A', 'None', etc.) We strongly recommend formatting your dataset with a uniform alphabetic identifier prior to running ReBATE. 
 
 #### Output a new filtered dataset (with and without an associated testing dataset):
 In addition to the scores, output a filtered training dataset with only 2 features, out of the 20 in the given dataset. 
 ```python
-./rebate.py -a multisurf -f data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -T 2
+./rebate.py -a multisurf -f ../data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -T 2
 ```
 In addition to the scores, output both a filtered training dataset with only 2 features, and a filtered testing dataset with the same 2 features.  Note that the respective Relief algorithm does not train on the testing data, but only uses it to make a new filtered testing dataset. Since we don't currently have a testing dataset available in our data folder we just specified the training data again, however you should ensure to give the path/name to the corresponding testing dataset instead.
 ```python
-./rebate.py -a multisurf -f data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -T 2 -x data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt
+./rebate.py -a multisurf -f ../data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt -T 2 -x data/GAMETES_Epistasis_2-Way_20atts_0.4H_EDM-1_1.txt
 ```
 Note that ReBATE automatically checks that the same feature set is present in both the training and testing datasets before running, and it will throw an error if the two datasets are not compatable. 
 
+## General Usage Guidelines
 
+1.) When performing feature selection, there is no universally best way to determine where to draw the cuttoff for including features. When using original Relief or ReliefF it has been suggested that features yielding a negative value score, can be confidently filtered out. This guideline is believed to be extendable to SURF, SURF\*, MultiSURF\*, and MultiSURF, however please note that features with a negative score are not necessarily irrelevant, and those with a positive score are not necessarily relevant. Instead, scores are most effectively interpreted as the relative evidence that a given feature is predictive of outcome. Thus, while it may be reasonable to only filter out features with a negative score, in practice it may be more useful to select some 'top' number of features to pass onto modeling. 
+
+2.) In very large feature spaces users can expect core Relief-based algorithm scores to become less reliable when run on their own. This is because as the feature space becomes very large, the determination of nearest neighbors becomes more random.  As a result, in very large feature spaces (e.g. > 10,000 features), users should consider combining a core Relief-based algorithm with an iterative approach such as TuRF (implemented here) or VLSRelieF, or Iterative Relief. 
+
+3.) When scaling up to big data problems, keep in mind that the data aspect that slows down ReBATE methods the most is the number of training instances, since Relief algorithms scale linearly with the number of features, but quadratically with the number of training instances. This is is the result of Relief-based methods needing to calculate a distance array (i.e. all pairwise distances between instances in the training dataset).  If you have a very large number of training instances available, consider utilizing a class balanced random sampling of that dataset when running any ReBATE methods to save on memory and computational time. 

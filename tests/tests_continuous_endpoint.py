@@ -23,11 +23,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 #Initialize hardcoded argument version of rebate.py
-import IO as io
-import Common as cmn
-import relieff as R
-import surf as S
-import multisurf as MS
+import rebate.IO as io
+import rebate.Common as cmn
+import rebate.relieff as R
+import rebate.surf as S
+import rebate.multisurf as MS
 import time as tm
 import sys
 import os

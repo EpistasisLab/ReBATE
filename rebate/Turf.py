@@ -23,10 +23,11 @@ OTHER DEALINGS IN THE SOFTWARE.
 import sys
 import time as tm
 import datetime as dt
+
 ###############################################################################
-def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options):
+def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options, cmn):
     from operator import itemgetter
-    import Common as cmn
+    #import Common as cmn
     import numpy as np
 
     lost = dict()

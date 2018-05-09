@@ -18,7 +18,7 @@ copyright: Developed by <a href="https://github.com/pschmitt52">Pete Schmitt</a>
 pages:
 - Home: index.md
 - Installation: installing.md
-- Using skrebate: using.md
+- Using ReBATE: using.md
 - Contributing: contributing.md
 - Release Notes: releases.md
 - Citing: citing.md

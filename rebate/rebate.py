@@ -155,7 +155,7 @@ if(turfpct > 0):  # Use TURF
         print('Running MultiSURF or MultiSURF* + TuRF')
         fun = MS.runMultiSURF
         
-    Scores,x,var,fullscores,lost,table = T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options)
+    Scores,x,var,fullscores,lost,table = T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options,cmn)
     options['algorithm'] = algorithm + "-turf"
 
 elif(algorithm == 'relieff'):

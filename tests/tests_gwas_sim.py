@@ -23,11 +23,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
 #Initialize hardcoded argument version of rebate.py
-import IO as io
-import Common as cmn
-import relieff as R
-import surf as S
-import multisurf as MS
+import rebate.IO as io
+import rebate.Common as cmn
+import rebate.relieff as R
+import rebate.surf as S
+import rebate.multisurf as MS
+import rebate.Turf as T
 import time as tm
 import sys
 import os
@@ -231,7 +232,6 @@ def test_multisurf_GWAS_Sim():
 def test_multisurf_turf_GWAS_Sim():
     """ Test MultiSURF with TuRF on GWAS_Sim """
     #New parameters
-    import Turf as T
     options['algorithm'] = 'multisurf'
     options['turfpct'] = '50'
     turfpct = int(options['turfpct'])
@@ -243,9 +243,9 @@ def test_multisurf_turf_GWAS_Sim():
     tempfullscores = None
     templost = None
     temptable = None
-    Scores,tempx,tempVar,tempfullscores,templost,temptable = T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options)
+    Scores,tempx,tempVar,tempfullscores,templost,temptable = T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options,cmn)
     options['algorithm'] = algorithm + "-turf"
-
+ 
     print("MultiSURF with TuRF + 6-bit Multiplexer ")
     print(str(Scores))
     #Check that score list is not empty

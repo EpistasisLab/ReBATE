@@ -2,9 +2,6 @@ __pycache__/
 /.settings/
 /.cache/
 /build/
-/mcMultiSURFStar.pyx
-/setup_MultiSURFStar.py
-/setup_mcMultiSURFStar.py
 *.pyd
 *.so
 *.c

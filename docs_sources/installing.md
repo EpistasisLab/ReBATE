@@ -34,11 +34,11 @@ pip install -upgrade setuptools
 ## Compile Cython
 Once these prerequisites are installed, it will be necessary to compile the Cython code on the respective operating system within which ReBATE will be run. It is only necessary to do this once, not every time ReBATE is run. This happens in two stages (1) a .pyx file is compiled by cython to a .c file, then (2) the .c file is compiled by a C compiler to a .so file (or a .pyd file for Windows). 
 
-Simply run the following file included with ReBATE to produce the .c and (.so or .pyd) files:  
+Navigate to the 'rebate' folder and simply run the following file included with ReBATE to produce the .c and (.so or .pyd) files:  
 ```
 ./make.sh
 ```
-If there is need to recompile the Cython files, first remove the previous .c and (.so or .pyd) files by running: 
+If there is need to recompile the Cython files, first remove the previous .c and (.so or .pyd) files by navigating to the 'rebate' folder and running: 
 ```
 ./clean.sh
 ```
