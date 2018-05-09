@@ -1,6 +1,9 @@
 Master status: [![Master Build Status](https://travis-ci.org/EpistasisLab/ReBATE.svg?branch=master)](https://travis-ci.org/EpistasisLab/ReBATE)
 [![Master Coverage Status](https://coveralls.io/repos/github/EpistasisLab/ReBATE/badge.svg?branch=master)](https://coveralls.io/github/EpistasisLab/ReBATE?branch=master)
 
+Development status: [![Development Build Status](https://travis-ci.org/EpistasisLab/ReBATE.svg?branch=development)](https://travis-ci.org/EpistasisLab/ReBATE)
+[![Development Coverage Status](https://coveralls.io/repos/github/EpistasisLab/ReBATE/badge.svg?branch=development&service=github)](https://coveralls.io/github/EpistasisLab/ReBATE?branch=development)
+
 Package information: ![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)
 ![Python 3.5](https://img.shields.io/badge/python-3.6-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)
