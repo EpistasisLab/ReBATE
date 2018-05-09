@@ -49,4 +49,10 @@ python -c "import pandas; print('pandas %s' % pandas.__version__)"
 python setup.py build_ext --inplace
 
 #Add lines from make.sh
-bash rebate/make.sh
+#bash make.sh
+echo "*** building MultiSURF "
+python rebate/setup_multisurf.py build_ext -i
+echo "*** building ReliefF "
+python rebate/setup_relieff.py build_ext -i
+echo "*** building SURF "
+python rebate/setup_surf.py build_ext -i
