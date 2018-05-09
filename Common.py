@@ -148,8 +148,7 @@ def getDistances(x, attr, var, cidx, didx, cheader):
         return np.add(d_dist, c_dist) / numattr
 
     else: #(dtype == 'continuous'):
-        x = pre_normalize(x)
-        return squareform(pdist(x,metric='cityblock'))
+        return squareform(pdist(pre_normalize(x),metric='cityblock'))
 
 ###############################################################################
 # return mask for discrete(0)/continuous(1) attributes and their indices
