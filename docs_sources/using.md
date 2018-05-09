@@ -4,7 +4,7 @@ This section presumes that all ReBATE prerequisites have been properly [installe
 To access the ReBATE help output (with all available run parameters and their default values), use the following command:
 
 ```
-rebate.py -h
+./rebate.py -h
 ```
 
 Below we provide an overview of the available ReBATE run parameters followed by code samples showing how the various Relief-based algorithms can be run.  Unlike [scikit-rebate](https://github.com/EpistasisLab/scikit-rebate), ReBATE automatically outputs a text file with the feature names and their associated scores sorted by descending scores. For details on the algorithmic differences between the various Relief-based algorithms, please refer to [this research paper](https://arxiv.org/abs/1711.08477). 

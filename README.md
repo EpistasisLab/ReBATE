@@ -47,7 +47,7 @@ For detailed information on installing ReBATE, including necessary prerequisites
 ## Running ReBATE
 From the '/rebate/' directory, run the following to view all available options: 
 ```
-rebate.py -h
+./rebate.py -h
 ```
 
 For detailed information and examples of how to run the different Relief algorithms available in this package, please refer to our [usage documentation](https://EpistasisLab.github.io/ReBATE/using/).
