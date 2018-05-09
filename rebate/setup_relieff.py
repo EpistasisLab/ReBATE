@@ -27,6 +27,6 @@ import numpy
 
 setup(
     cmdclass = {'build_ext': build_ext},
-    ext_modules = [Extension("relieff", sources=["ReliefF.pyx"],
+    ext_modules = [Extension("relieff", sources=["rebate/ReliefF.pyx"],
                              include_dirs=[numpy.get_include()])],
 )
