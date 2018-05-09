@@ -16,7 +16,7 @@ Make sure to familiarize yourself with the project layout before making any majo
 
 ## How to contribute
 
-The preferred way to contribute to ReBATE is to fork the 
+The preferred way to contribute to ReBATE is to fork the
 [main repository](https://github.com/EpistasisLab/ReBATE/) on
 GitHub:
 
@@ -39,7 +39,10 @@ GitHub:
 
 5. Start making changes on your newly created branch, remembering to never work on the ``master`` branch! Work on this copy on your computer using Git to do the version control.
 
-6. Once some changes are saved locally, you can use your tweaked version of ReBATE by navigating to the project's base directory and running ReBATE in a script. 
+6. Once some changes are saved locally, you can use your tweaked version of ReBATE by navigating to the project's base directory and rebuild ReBATE in a script.
+
+          $ ./clean.sh
+          $ ./make.sh
 
 7. To check your changes haven't broken any existing tests and to check new tests you've added pass run the following (note, you must have the `nose` package installed within your dev environment for this to work):
 

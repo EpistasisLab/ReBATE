@@ -150,7 +150,7 @@
 </ul>
 <p>Make sure to familiarize yourself with the project layout before making any major contributions, and especially make sure to send all code changes to the <code>development</code> branch.</p>
 <h2 id="how-to-contribute">How to contribute</h2>
-<p>The preferred way to contribute to ReBATE is to fork the 
+<p>The preferred way to contribute to ReBATE is to fork the
 <a href="https://github.com/EpistasisLab/ReBATE/">main repository</a> on
 GitHub:</p>
 <ol>
@@ -179,7 +179,10 @@ GitHub:</p>
 <p>Start making changes on your newly created branch, remembering to never work on the <code>master</code> branch! Work on this copy on your computer using Git to do the version control.</p>
 </li>
 <li>
-<p>Once some changes are saved locally, you can use your tweaked version of ReBATE by navigating to the project's base directory and running ReBATE in a script. </p>
+<p>Once some changes are saved locally, you can use your tweaked version of ReBATE by navigating to the project's base directory and rebuild ReBATE in a script.</p>
+<pre><code>  $ ./clean.sh
+  $ ./make.sh
+</code></pre>
 </li>
 <li>
 <p>To check your changes haven't broken any existing tests and to check new tests you've added pass run the following (note, you must have the <code>nose</code> package installed within your dev environment for this to work):</p>
