@@ -49,4 +49,4 @@ python -c "import pandas; print('pandas %s' % pandas.__version__)"
 python setup.py build_ext --inplace
 
 #Add lines from make.sh
-bash make.sh
+bash rebate/make.sh
