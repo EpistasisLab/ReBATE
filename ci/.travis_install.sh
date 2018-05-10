@@ -51,12 +51,18 @@ python setup.py build_ext --inplace
 #Add lines from make.sh
 #bash make.sh
 echo "*** building MultiSURF "
-python rebate/setup_multisurf.py build_ext -i
+python rebate/setup_multisurf.py build_ext -b
 echo "*** building ReliefF "
-python rebate/setup_relieff.py build_ext -i
+python rebate/setup_relieff.py build_ext -b
 echo "*** building SURF "
-python rebate/setup_surf.py build_ext -i #try removing -i, or build_ex to install
+python rebate/setup_surf.py build_ext -b #try removing -i, or build_ex to install
+#echo "*** building MultiSURF "
+#python rebate/setup_multisurf.py build_ext -i
+#echo "*** building ReliefF "
+#python rebate/setup_relieff.py build_ext -i
+#echo "*** building SURF "
+#python rebate/setup_surf.py build_ext -i #try removing -i, or build_ex to install
 
 ls
-cd rebate
-ls
+#cd rebate
+#ls
