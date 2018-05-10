@@ -55,4 +55,6 @@ python rebate/setup_multisurf.py build_ext -i
 echo "*** building ReliefF "
 python rebate/setup_relieff.py build_ext -i
 echo "*** building SURF "
-python rebate/setup_surf.py build_ext -i
+python rebate/setup_surf.py build_ext -i #try removing -i, or build_ex to install
+
+ls
