@@ -32,7 +32,7 @@ conda update --yes conda
 # Configure the conda environment and put it in the path using the
 # provided versions
 conda create -n testenv --yes python=$PYTHON_VERSION pip nose \
-    numpy scipy scikit-learn cython pandas
+    numpy scipy cython pandas
 
 source activate testenv
 
@@ -44,9 +44,14 @@ fi
 python --version
 python -c "import numpy; print('numpy %s' % numpy.__version__)"
 python -c "import scipy; print('scipy %s' % scipy.__version__)"
-python -c "import sklearn; print('sklearn %s' % sklearn.__version__)"
 python -c "import pandas; print('pandas %s' % pandas.__version__)"
 python setup.py build_ext --inplace
 
 #Add lines from make.sh
-bash make.sh
+#bash make.sh
+echo "*** building MultiSURF "
+python rebate/setup_multisurf.py build_ext -b rebate
+echo "*** building ReliefF "
+python rebate/setup_relieff.py build_ext -b rebate
+echo "*** building SURF "
+python rebate/setup_surf.py build_ext -b rebate 

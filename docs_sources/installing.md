@@ -1,4 +1,5 @@
 #Installing ReBATE
+Here we describe how ReBATE can be used by downloading the source from GitHub. At a later date, we are aiming to make ReBATE available for easy installation as a pip install python package. 
 
 ## Prerequisites
 All of the necessary Python packages can be installed via the [Anaconda Python distribution](https://www.continuum.io/downloads), which we strongly recommend that you use. We also strongly recommend that you use Python 3 over Python 2 if you're given the choice.
@@ -34,11 +35,11 @@ pip install -upgrade setuptools
 ## Compile Cython
 Once these prerequisites are installed, it will be necessary to compile the Cython code on the respective operating system within which ReBATE will be run. It is only necessary to do this once, not every time ReBATE is run. This happens in two stages (1) a .pyx file is compiled by cython to a .c file, then (2) the .c file is compiled by a C compiler to a .so file (or a .pyd file for Windows). 
 
-Navigate to the 'rebate' folder and simply run the following file included with ReBATE to produce the .c and (.so or .pyd) files:  
+From the root directory simply run the following file included with ReBATE to produce the .c and (.so or .pyd) files:  
 ```
 ./make.sh
 ```
-If there is need to recompile the Cython files, first remove the previous .c and (.so or .pyd) files by navigating to the 'rebate' folder and running: 
+If there is need to recompile the Cython files, first remove the previous .c and (.so or .pyd) files run the following from the root directory: 
 ```
 ./clean.sh
 ```
