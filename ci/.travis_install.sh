@@ -58,3 +58,5 @@ echo "*** building SURF "
 python rebate/setup_surf.py build_ext -i #try removing -i, or build_ex to install
 
 ls
+cd rebate
+ls
