@@ -243,7 +243,7 @@ def test_multisurf_turf_GWAS_Sim():
     tempfullscores = None
     templost = None
     temptable = None
-    Scores,tempx,tempVar,tempfullscores,templost,temptable = T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options,cmn)
+    Scores,tempx,tempVar,templost,temptable = T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options,cmn)
     options['algorithm'] = algorithm + "-turf"
  
     print("MultiSURF with TuRF + 6-bit Multiplexer ")

@@ -10,7 +10,7 @@ Package information: ![Python 2.7](https://img.shields.io/badge/python-2.7-blue.
 
 # ReBATE (Relief-based Algorithm Training Environment) 
 This package includes stand-alone Python code to run any of the included/available [Relief-Based algorithms (RBAs)](https://en.wikipedia.org/wiki/Relief_(feature_selection)) 
-designed for feature weighting/selection as part of a machine learning pipeline (supervised learning). Presently this includes the following core RBAs: ReliefF, SURF, SURF*, and MultiSURF*. Additionally, an implementation of the iterative TuRF mechanism is included. **It is still under active development** and we encourage you to check back on this repository regularly for updates.
+designed for feature weighting/selection as part of a machine learning pipeline (supervised learning). Presently this includes the following core RBAs: ReliefF, SURF, SURF\*, MultiSURF\* and MultiSURF. Additionally, an implementation of the iterative TuRF mechanism is included. **It is still under active development** and we encourage you to check back on this repository regularly for updates.
 
 These algorithms offer a computationally efficient way to perform feature selection that is sensitive to feature interactions as well as simple univariate associations, unlike most currently available filter-based feature selection methods. The main benefit of Relief algorithms is that they identify feature interactions without having to exhaustively check every pairwise interaction, thus taking significantly less time than exhaustive pairwise search.
 

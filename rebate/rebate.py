@@ -30,7 +30,7 @@ import IO as io
 import Common as cmn
 ###############################################################################
 prog_start = tm.time()
-Scores = fullscores = table = lost = 0
+Scores = table = lost = 0
 #-----------------------------------------------------------------------------#
 #
 # Get arguments from command line ---------------------------------------------
@@ -155,7 +155,7 @@ if(turfpct > 0):  # Use TURF
         print('Running MultiSURF or MultiSURF* + TuRF')
         fun = MS.runMultiSURF
         
-    Scores,x,var,fullscores,lost,table = T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options,cmn)
+    Scores,x,var,lost,table = T.runTurf(header,x,y,attr,var,distArray,pct,iterations,fun,options,cmn)
     options['algorithm'] = algorithm + "-turf"
 
 elif(algorithm == 'relieff'):

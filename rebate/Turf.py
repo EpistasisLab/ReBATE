@@ -27,45 +27,33 @@ import datetime as dt
 ###############################################################################
 def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options, cmn):
     from operator import itemgetter
-    #import Common as cmn
     import numpy as np
 
-    lost = dict()
+    lost = dict() #Dictionary storing the header names and iteration lost of all features filtered out in this round by TuRF
     start = tm.time()
     save_x = x
     V = options['verbose']
+
     if(V): print('Under TURF Control...')
 
-    #--------------------------------------------------------------------------
-    def adjust_variables(var, attr):
-        c = d = 0
-        for key in attr:
-            if attr[key][0] == 'continuous':
-                c += 1
-            else:
-                d += 1
-
-        var['dpct'] = (float(d) / (d + c) * 100, d)
-        var['cpct'] = (float(c) / (d + c) * 100, c)
     #--------------------------------------------------------------------------
     def create_newdata(header, x):
         dlist = []
         cnt = 0
-        tmp = 0
-        hlist = []
 
         if(V):
             print('Reducing attributes by ' + str(options['turfpct']) + '%')
             sys.stdout.flush()
 
+        #Go through table with feature sorted by decreasing scores, once we hit keepcnt, we start adding to lost. 
         for a in table:
             if(cnt >= keepcnt):
                 lost[a[0]] = iteration + 1
-                hlist.append(a[0])     # append lost attribe names to hlist
                 i = header.index(a[0])
-                dlist.append(i)
+                dlist.append(i) #store position of each feature removed in dlist. 
             cnt += 1
-
+        
+        #update header and dataset to reflect removal of lowest scoring features. 
         header = np.delete(header,dlist).tolist() #remove orphans from header
         x = np.delete(x,dlist,axis=1) #remove orphaned attributes from data
         x = np.ascontiguousarray(x, dtype=np.double)
@@ -73,7 +61,8 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options, c
         if(V):
             print('Getting new variables, attributes and distance array')
             sys.stdout.flush()
-
+        
+        #Redo data survey (which may save time in downstream distance array calculation (depending on dataset)
         var = cmn.getVariables(header, x, y, options)
         attr = cmn.getAttributeInfo(header, x, var, options)
 
@@ -97,6 +86,7 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options, c
 
         begin = tm.time()
         diffs, cidx, didx = cmn.dtypeArray(header, attr, var)
+        #Calculate distance array based on present feature types and data missingness.
         if(var['mdcnt'] > 0):
             import mmDistance as md
             distArray = md.getDistances(x[:,cidx], x[:,didx], var, diffs[cidx])
@@ -112,8 +102,9 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options, c
 
         return header, x, attr, var, distArray, lost
     #--------------------------------------------------------------------------
-    fullscores = dict()
+    
     print("Total Iterations: " + str(iterations))
+    #Main TuRF loop--------------------
     for iteration in range(iterations):
         numattr = var['NumAttributes']
         if(V):
@@ -123,7 +114,8 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options, c
             sys.stdout.flush()
 
         table = []
-
+        
+        #Run the selected core Relief-based algorithm scoring method.
         Scores = fun(header,x,y,attr,var,distArray,options)
 
         if(V):
@@ -132,16 +124,20 @@ def runTurf(header, x, y, attr, var, distArray, pct, iterations, fun, options, c
 
         for j in range(var['NumAttributes']):
             table.append([header[j], Scores[j]])
-            fullscores[header[j]] = (Scores[j])
 
         table = sorted(table,key=itemgetter(1), reverse=True)
 
         if(iteration + 1 < iterations):
+            #Calculate features to preserve in the next score update.
             keepcnt = int(numattr - numattr * pct)
+            if keepcnt == numattr: #Special case (Ensure at least one feature filtered out in an iteration)
+                keepcnt -= 1                
+                
+            #Store data subset.
             header,x,attr,var,distArray,lost = create_newdata(header, x)
 
     if(V):
         print('Turf finished! Overall time: ' + str(tm.time() - start))
         sys.stdout.flush()
-    return Scores,save_x,var,fullscores,lost,table
+    return Scores,save_x,var,lost,table
 ###############################################################################
